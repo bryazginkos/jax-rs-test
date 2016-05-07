@@ -1,6 +1,8 @@
 package ru.kosdev.train.jaxrs.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import ru.kosdev.train.jaxrs.api.UserService;
 
 import javax.annotation.PostConstruct;
 import javax.ws.rs.GET;
@@ -12,6 +14,9 @@ import javax.ws.rs.Path;
 @Path("/")
 @Controller
 public class MainResource  {
+
+    @Autowired
+    private UserService userService;
 
     @GET
     @Path("res")
