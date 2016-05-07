@@ -2,8 +2,8 @@ package ru.kosdev.train.jaxrs.service.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.kosdev.train.jaxrs.api.UserService;
-import ru.kosdev.train.jaxrs.dto.ContactDto;
+import ru.kosdev.train.jaxrs.service.api.contract.UserService;
+import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 import ru.kosdev.train.jaxrs.repository.dao.ContactRepository;
 import ru.kosdev.train.jaxrs.repository.entity.Contact;
 

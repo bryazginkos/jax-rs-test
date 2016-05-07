@@ -1,6 +1,6 @@
-package ru.kosdev.train.jaxrs.api;
+package ru.kosdev.train.jaxrs.service.api.contract;
 
-import ru.kosdev.train.jaxrs.dto.ContactDto;
+import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 
 import java.util.List;
 

@@ -2,10 +2,10 @@ package ru.kosdev.train.jaxrs.service.converters.fromdto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.kosdev.train.jaxrs.dto.AdditionalInfoDto;
-import ru.kosdev.train.jaxrs.dto.AddressDto;
-import ru.kosdev.train.jaxrs.dto.ContactDto;
-import ru.kosdev.train.jaxrs.dto.GroupDto;
+import ru.kosdev.train.jaxrs.service.api.dto.AdditionalInfoDto;
+import ru.kosdev.train.jaxrs.service.api.dto.AddressDto;
+import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
+import ru.kosdev.train.jaxrs.service.api.dto.GroupDto;
 import ru.kosdev.train.jaxrs.repository.entity.AdditionalInfo;
 import ru.kosdev.train.jaxrs.repository.entity.Address;
 import ru.kosdev.train.jaxrs.repository.entity.Contact;

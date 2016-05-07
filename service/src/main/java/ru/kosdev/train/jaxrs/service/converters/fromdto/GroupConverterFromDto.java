@@ -1,7 +1,7 @@
 package ru.kosdev.train.jaxrs.service.converters.fromdto;
 
 import org.springframework.stereotype.Service;
-import ru.kosdev.train.jaxrs.dto.GroupDto;
+import ru.kosdev.train.jaxrs.service.api.dto.GroupDto;
 import ru.kosdev.train.jaxrs.repository.entity.Group;
 
 import java.util.function.Function;

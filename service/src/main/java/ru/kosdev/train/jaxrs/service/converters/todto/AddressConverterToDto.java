@@ -1,7 +1,7 @@
 package ru.kosdev.train.jaxrs.service.converters.todto;
 
 import org.springframework.stereotype.Service;
-import ru.kosdev.train.jaxrs.dto.AddressDto;
+import ru.kosdev.train.jaxrs.service.api.dto.AddressDto;
 import ru.kosdev.train.jaxrs.repository.entity.Address;
 
 import java.util.function.Function;

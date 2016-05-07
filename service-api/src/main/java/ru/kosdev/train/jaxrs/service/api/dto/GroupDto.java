@@ -1,4 +1,4 @@
-package ru.kosdev.train.jaxrs.dto;
+package ru.kosdev.train.jaxrs.service.api.dto;
 
 import lombok.Getter;
 import lombok.Setter;
