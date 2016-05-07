@@ -22,31 +22,8 @@
 
     </dependencies>
 
-    <properties>
-        <jetty.maven.plugin.version>9.2.1.v20140609</jetty.maven.plugin.version>
-    </properties>
-
     <build>
         <plugins>
-            <!--<plugin>-->
-                <!--<groupId>org.eclipse.jetty</groupId>-->
-                <!--<artifactId>jetty-maven-plugin</artifactId>-->
-                <!--<version>${jetty.maven.plugin.version}</version>-->
-                <!--<configuration>-->
-                    <!--<war>${project.basedir}/target/${project.build.finalName}.war</war>-->
-                    <!--<systemProperties>-->
-                        <!--<force>true</force>-->
-                        <!--<systemProperty>-->
-                            <!--<name>jetty.home</name>-->
-                            <!--<value>/</value>-->
-                        <!--</systemProperty>-->
-                    <!--</systemProperties>-->
-                    <!--<webApp>-->
-                        <!--<contextPath>/</contextPath>-->
-                        <!--<extraClasspath>${basedir}/../configs/</extraClasspath>-->
-                    <!--</webApp>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
