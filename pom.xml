@@ -17,6 +17,7 @@
         <project.build.target>1.8</project.build.target>
 
         <jersey.version>2.22</jersey.version>
+        <spring.version>4.2.6.RELEASE</spring.version>
     </properties>
 
     <version>1.0-SNAPSHOT</version>
