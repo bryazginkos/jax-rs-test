@@ -25,7 +25,7 @@ import java.util.UUID;
 @Controller
 public class MainResource  {
 
-    @Value("${images.dir")
+    @Value("${images.dir}")
     private String imagesPath;
 
     @Autowired
