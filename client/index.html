@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="form-group col-xs-2">
                             <label for="groupid{{$index}}">ID {{$index + 1}}</label>
-                            <input type="text" class="form-control short" id="groupid{{$index}}" placeholder="ID" value="{{group.id}}">
+                            <input type="text" class="form-control " id="groupid{{$index}}" placeholder="ID" value="{{group.id}}">
                         </div>
                         <div class="form-group col-xs-7">
                             <label for="groupname{{$index}}">Group name {{$index + 1}}</label>
@@ -50,7 +50,7 @@
                     <div class="row">
                         <div class="form-group col-xs-9">
                             <label for="address{{$index}}">Address {{$index + 1}}</label>
-                            <input type="text" class="form-control short" id="address{{$index}}" placeholder="Address" value="{{address}}">
+                            <input type="text" class="form-control " id="address{{$index}}" placeholder="Address" value="{{address}}">
                         </div>
                         <div class="col-xs-3">
                             <label for="deladdressbtn{{$index}}">Delete {{$index + 1}}</label>
@@ -59,6 +59,27 @@
                     </div>
                 </div>
                 <a class="btn btn-primary">Add Address</a>
+
+                <div ng-repeat="additionalField in additionalFields track by $index">
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <label for="additionaltype{{$index}}">Type {{$index + 1}}</label>
+                            <select class="form-control" id="additionaltype{{$index}}"
+                                    ng-options="i.id as i.value for i in fieldTypes" ng-model="additionalField.type">
+
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-5">
+                            <label for="additionalValue{{$index}}">Value {{$index + 1}}</label>
+                            <input type="text" class="form-control" id="additionalValue{{$index}}" placeholder="Value" value="{{additionalField.value}}">
+                        </div>
+                        <div class="col-xs-3">
+                            <label for="deladditional{{$index}}">Delete {{$index + 1}}</label>
+                            <input type="button" class="btn btn-danger" id="deladditional{{$index}}" value="X">
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-primary">Add Field</a>
 
             </div>
         </div>
