@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/mainModule.js"></script>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default" ng-controller="addCtrl">
+            <div class="panel-heading">
+                Add Contact
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="contactName">Name</label>
+                    <input type="text" class="form-control" id="contactName" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">Image URL</label>
+                    <input type="text" class="form-control" id="imageUrl" placeholder="URL">
+                </div>
+                <div ng-repeat="group in groups track by $index">
+                    <div class="row">
+                        <div class="form-group col-xs-2">
+                            <label for="groupid{{$index}}">ID {{$index + 1}}</label>
+                            <input type="text" class="form-control short" id="groupid{{$index}}" placeholder="ID" value="{{group.id}}">
+                        </div>
+                        <div class="form-group col-xs-7">
+                            <label for="groupname{{$index}}">Group name {{$index + 1}}</label>
+                            <input type="text" class="form-control" id="groupname{{$index}}" placeholder="Group" value="{{group.name}}">
+                        </div>
+                        <div class="col-xs-3">
+                            <label for="delgroupbtn{{$index}}">Delete {{$index + 1}}</label>
+                            <input type="button" class="btn btn-danger" id="delgroupbtn{{$index}}" value="X">
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-primary">Add Group</a>
+                <div ng-repeat="address in addresses track by $index">
+                    <div class="row">
+                        <div class="form-group col-xs-9">
+                            <label for="address{{$index}}">Address {{$index + 1}}</label>
+                            <input type="text" class="form-control short" id="address{{$index}}" placeholder="Address" value="{{address}}">
+                        </div>
+                        <div class="col-xs-3">
+                            <label for="deladdressbtn{{$index}}">Delete {{$index + 1}}</label>
+                            <input type="button" class="btn btn-danger" id="deladdressbtn{{$index}}" value="X">
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-primary">Add Address</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
