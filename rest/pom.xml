@@ -55,12 +55,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.glassfish.jersey.ext</groupId>
-            <artifactId>jersey-mvc</artifactId>
-            <version>${jersey.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.2</version>
