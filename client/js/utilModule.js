@@ -9,8 +9,8 @@ utilModule.directive('contactGroup', function() {
         templateUrl: 'template/groupTemplate.html',
         replace: false,
         scope : {
-            group : '=ngModel',
-            index : '=ngIndex'
+            group : '=',
+            index : '='
         }
     }
 });

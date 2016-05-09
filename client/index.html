@@ -32,7 +32,7 @@
                     <input type="text" class="form-control" id="imageUrl" placeholder="URL">
                 </div>
                 <div ng-repeat="group in groups track by $index">
-                    <contact-group ng-model="group" ng-index="$index"></contact-group>
+                    <contact-group group="group" index="$index"></contact-group>
                 </div>
                 <a class="btn btn-primary">Add Group</a>
                 <div ng-repeat="address in addresses track by $index">
@@ -69,7 +69,6 @@
                     </div>
                 </div>
                 <a class="btn btn-primary">Add Field</a>
-
             </div>
         </div>
     </div>
