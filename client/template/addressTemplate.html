@@ -1,0 +1,15 @@
+<div ng-repeat="address in addresses track by $index">
+    <div class="row">
+        <div class="form-group col-xs-9">
+            <label for="address{{$index}}">Address {{$index + 1}}</label>
+            <input type="text" class="form-control " id="address{{$index}}" placeholder="Address" ng-model="address.value">
+        </div>
+        <div class="col-xs-3">
+            <label for="deladdressbtn{{$index}}">Delete {{$index + 1}}</label>
+            <input type="button" class="btn btn-danger" id="deladdressbtn{{$index}}" ng-click="deleteAddress($index)" value="X">
+        </div>
+    </div>
+</div>
+<div>
+    <a class="btn btn-primary" ng-click="addAddress()">Add Address</a>
+</div>

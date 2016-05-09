@@ -33,20 +33,7 @@
                 </div>
 
                 <contact-groups groups="groups"></contact-groups>
-
-                <div ng-repeat="address in addresses track by $index">
-                    <div class="row">
-                        <div class="form-group col-xs-9">
-                            <label for="address{{$index}}">Address {{$index + 1}}</label>
-                            <input type="text" class="form-control " id="address{{$index}}" placeholder="Address" value="{{address}}">
-                        </div>
-                        <div class="col-xs-3">
-                            <label for="deladdressbtn{{$index}}">Delete {{$index + 1}}</label>
-                            <input type="button" class="btn btn-danger" id="deladdressbtn{{$index}}" value="X">
-                        </div>
-                    </div>
-                </div>
-                <a class="btn btn-primary">Add Address</a>
+                <contact-addresses addresses="addresses"></contact-addresses>
 
                 <div ng-repeat="additionalField in additionalFields track by $index">
                     <div class="row">

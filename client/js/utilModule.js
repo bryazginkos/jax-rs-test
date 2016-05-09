@@ -22,3 +22,23 @@ utilModule.directive('contactGroups', function() {
         }
     }
 });
+
+utilModule.directive('contactAddresses', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'template/addressTemplate.html',
+        replace: false,
+        scope : {
+            addresses : '='
+        },
+        link : function ($scope) {
+            $scope.addAddress = function () {
+                $scope.addresses.push({value: ''});
+            }
+
+            $scope.deleteAddress = function (addressId) {
+                $scope.addresses.splice(addressId, 1);
+            }
+        }
+    }
+});
