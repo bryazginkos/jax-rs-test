@@ -34,27 +34,7 @@
 
                 <contact-groups groups="groups"></contact-groups>
                 <contact-addresses addresses="addresses"></contact-addresses>
-
-                <div ng-repeat="additionalField in additionalFields track by $index">
-                    <div class="row">
-                        <div class="form-group col-xs-4">
-                            <label for="additionaltype{{$index}}">Type {{$index + 1}}</label>
-                            <select class="form-control" id="additionaltype{{$index}}"
-                                    ng-options="i.id as i.value for i in fieldTypes" ng-model="additionalField.type">
-
-                            </select>
-                        </div>
-                        <div class="form-group col-xs-5">
-                            <label for="additionalValue{{$index}}">Value {{$index + 1}}</label>
-                            <input type="text" class="form-control" id="additionalValue{{$index}}" placeholder="Value" value="{{additionalField.value}}">
-                        </div>
-                        <div class="col-xs-3">
-                            <label for="deladditional{{$index}}">Delete {{$index + 1}}</label>
-                            <input type="button" class="btn btn-danger" id="deladditional{{$index}}" value="X">
-                        </div>
-                    </div>
-                </div>
-                <a class="btn btn-primary">Add Field</a>
+                <contact-additional-fields additional-fields="additionalFields"></contact-additional-fields>
             </div>
         </div>
     </div>
