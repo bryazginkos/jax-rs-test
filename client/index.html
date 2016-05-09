@@ -7,6 +7,8 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+
+    <script src="js/utilModule.js"></script>
     <script src="js/mainModule.js"></script>
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
@@ -30,20 +32,7 @@
                     <input type="text" class="form-control" id="imageUrl" placeholder="URL">
                 </div>
                 <div ng-repeat="group in groups track by $index">
-                    <div class="row">
-                        <div class="form-group col-xs-2">
-                            <label for="groupid{{$index}}">ID {{$index + 1}}</label>
-                            <input type="text" class="form-control " id="groupid{{$index}}" placeholder="ID" value="{{group.id}}">
-                        </div>
-                        <div class="form-group col-xs-7">
-                            <label for="groupname{{$index}}">Group name {{$index + 1}}</label>
-                            <input type="text" class="form-control" id="groupname{{$index}}" placeholder="Group" value="{{group.name}}">
-                        </div>
-                        <div class="col-xs-3">
-                            <label for="delgroupbtn{{$index}}">Delete {{$index + 1}}</label>
-                            <input type="button" class="btn btn-danger" id="delgroupbtn{{$index}}" value="X">
-                        </div>
-                    </div>
+                    <contact-group ng-model="group" ng-index="$index"></contact-group>
                 </div>
                 <a class="btn btn-primary">Add Group</a>
                 <div ng-repeat="address in addresses track by $index">
