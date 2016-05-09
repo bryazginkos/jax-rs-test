@@ -3,14 +3,22 @@
  */
 var utilModule = angular.module('utilModule', []);
 
-utilModule.directive('contactGroup', function() {
+utilModule.directive('contactGroups', function() {
     return {
         restrict: 'E',
         templateUrl: 'template/groupTemplate.html',
         replace: false,
         scope : {
-            group : '=',
-            index : '='
+            groups : '='
+        },
+        link : function ($scope) {
+            $scope.addGroup = function () {
+                $scope.groups.push({id : null, name : ''});
+            }
+
+            $scope.deleteGroup = function (groupId) {
+                $scope.groups.splice(groupId, 1);
+            }
         }
     }
 });
