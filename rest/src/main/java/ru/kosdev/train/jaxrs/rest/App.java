@@ -12,7 +12,7 @@ import javax.ws.rs.ApplicationPath;
 public class App extends ResourceConfig {
 
     public App() {
-        packages("ru.kosdev.train.jaxrs.rest");
         register(MultiPartFeature.class);
+        register(MainResource.class);
     }
 }
