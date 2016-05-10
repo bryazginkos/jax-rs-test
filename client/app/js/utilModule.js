@@ -70,14 +70,3 @@ utilModule.directive('contactAdditionalFields', function() {
         }
     }
 });
-
-utilModule.directive('contacts', function() {
-    return {
-        restrict: 'E',
-        templateUrl: 'template/contactTemplate.html',
-        replace: false,
-        scope : {
-            contacts : '='
-        }
-    }
-});

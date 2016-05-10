@@ -3,20 +3,21 @@
  */
 var module = angular.module('app', ['utilModule']);
 
-module.controller('addCtrl', function($scope, $http) {
-    $scope.groupList = [{id : 1, name : 'Group1'}, {id : 2, name : 'Group2'}];
-    $scope.addressList = [{value : 'Address1'}, {value: 'Address2'}];
-    $scope.additionalFields = [{type : 1, value : '22.05.1991'}, {type : 2, value : 'http://google.com'}];
-    $scope.name = 'Kostya';
-    $scope.imageName = '323';
+module.controller('mainCtrl', function($scope, $http) {
+    $scope.contact = {};
+    $scope.contact.groupList = [{id : 1, name : 'Group1'}, {id : 2, name : 'Group2'}];
+    $scope.contact.addressList = [{value : 'Address1'}, {value: 'Address2'}];
+    $scope.contact.additionalFields = [{type : 1, value : '22.05.1991'}, {type : 2, value : 'http://google.com'}];
+    $scope.contact.name = 'Kostya';
+    $scope.contact.imageName = '323';
 
     $scope.addContact = function () {
         var contact = {
-            name: $scope.name,
-            imageName: $scope.imageName,
-            groupList: $scope.groupList,
-            addressList: $scope.addressList,
-            additionalInfoList: createAdditionalInfoList($scope.additionalFields)
+            name: $scope.contact.name,
+            imageName: $scope.contact.imageName,
+            groupList: $scope.contact.groupList,
+            addressList: $scope.contact.addressList,
+            additionalInfoList: createAdditionalInfoList($scope.contact.additionalFields)
         };
 
         $http({
@@ -25,6 +26,18 @@ module.controller('addCtrl', function($scope, $http) {
             data : contact,
         }).then(function successCallback(response) {
             alert('Ok');
+        }, function errorCallback(response) {
+            alert('Error');
+        });
+    }
+
+    $scope.showAll = function () {
+        $http({
+            method: 'GET',
+            url: '/api/contacts'
+        }).then(function successCallback(response) {
+            alert('Ok');
+            $scope.contacts = response.data;
         }, function errorCallback(response) {
             alert('Error');
         });
@@ -62,16 +75,3 @@ function createAdditionalInfoList(additionalFields) {
     return additionalInfoList;
 };
 
-module.controller('showCtrl', function($scope, $http) {
-    $scope.showAll = function () {
-        $http({
-            method: 'GET',
-            url: '/api/contacts'
-        }).then(function successCallback(response) {
-            alert('Ok');
-            $scope.contacts = response.data;
-        }, function errorCallback(response) {
-            alert('Error');
-        });
-    }
-});
