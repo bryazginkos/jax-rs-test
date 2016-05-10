@@ -19,7 +19,7 @@ public class Contact {
     @Getter @Setter
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(fetch = FetchType.EAGER)
     @Getter @Setter
     private List<Group> groupList;
 

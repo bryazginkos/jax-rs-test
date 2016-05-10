@@ -41,7 +41,7 @@ public class MainResource  {
     @Path("contact")
     @Consumes(MediaType.APPLICATION_JSON)
     public void save(ContactDto contactDto) {
-
+        userService.updateContact(contactDto);
     }
 
 
@@ -56,7 +56,8 @@ public class MainResource  {
     @Produces(MediaType.APPLICATION_JSON)
     public List<ContactDto> showContacts(@QueryParam("start") Integer start,
                                          @QueryParam("max") Integer max) {
-        return null;
+        List<ContactDto> contactDtoList = userService.showContacts(start, max);
+        return contactDtoList;
     }
 
     @POST

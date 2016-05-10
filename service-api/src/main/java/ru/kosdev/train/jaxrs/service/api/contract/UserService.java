@@ -13,5 +13,5 @@ public interface UserService {
 
     void deleteContact(Integer contactId);
 
-    List<ContactDto> showContacts(int start, int maxNumber);
+    List<ContactDto> showContacts(Integer start, Integer maxNumber);
 }
