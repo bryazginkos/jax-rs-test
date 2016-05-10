@@ -10,7 +10,6 @@ import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -21,7 +20,7 @@ import java.util.UUID;
 /**
  * Created by kbryazgin on 5/6/2016.
  */
-@Path("/")
+@Path("/api")
 @Controller
 public class MainResource  {
 
@@ -32,14 +31,14 @@ public class MainResource  {
     private UserService userService;
 
     @PUT
-    @Path("contract")
+    @Path("contact")
     @Consumes(MediaType.APPLICATION_JSON)
     public void updateContact(ContactDto contactDto) {
 
     }
 
     @POST
-    @Path("contract")
+    @Path("contact")
     @Consumes(MediaType.APPLICATION_JSON)
     public void save(ContactDto contactDto) {
 
@@ -47,13 +46,13 @@ public class MainResource  {
 
 
     @DELETE
-    @Path("contract/{id}")
+    @Path("contact/{id}")
     public void deleteContact(@PathParam(value = "id") Integer contactId) {
 
     }
 
     @GET
-    @Path("contracts")
+    @Path("contacts")
     @Produces(MediaType.APPLICATION_JSON)
     public List<ContactDto> showContacts(@QueryParam("start") Integer start,
                                          @QueryParam("max") Integer max) {
