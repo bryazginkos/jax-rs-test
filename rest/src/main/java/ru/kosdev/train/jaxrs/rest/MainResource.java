@@ -21,6 +21,7 @@ import java.util.UUID;
  * Created by kbryazgin on 5/6/2016.
  */
 @Controller
+@Path("/")
 public class MainResource  {
 
     @Value("${images.dir}")
