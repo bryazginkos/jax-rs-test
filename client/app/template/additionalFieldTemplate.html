@@ -8,7 +8,7 @@
         </div>
         <div class="form-group col-xs-5">
             <label for="additionalValue{{$index}}">Value {{$index + 1}}</label>
-            <input type="text" class="form-control" id="additionalValue{{$index}}" placeholder="Value" value="{{additionalField.value}}">
+            <input type="text" class="form-control" id="additionalValue{{$index}}" placeholder="Value" ng-model="additionalField.value">
         </div>
         <div class="col-xs-3">
             <label for="deladditional{{$index}}">Delete {{$index + 1}}</label>
