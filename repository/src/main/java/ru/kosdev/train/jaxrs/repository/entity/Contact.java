@@ -28,7 +28,7 @@ public class Contact {
 
     @ElementCollection
     @Getter @Setter
-    private List<Address> addresses;
+    private List<Address> addressList;
 
     @ElementCollection
     @Getter @Setter

@@ -24,7 +24,7 @@ public class ContactDto {
     private String imageName;
 
     @Getter @Setter
-    private List<AddressDto> addresses;
+    private List<AddressDto> addressList;
 
     @Getter @Setter
     private List<AdditionalInfoDto> additionalInfoList;

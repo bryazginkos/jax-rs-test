@@ -61,7 +61,7 @@ public class ContactConverterFromDto implements Function<ContactDto, Contact> {
                     .stream()
                     .map(addressFunction)
                     .collect(Collectors.toList());
-            contact.setAddresses(addresses);
+            contact.setAddressList(addresses);
         }
 
         return contact;

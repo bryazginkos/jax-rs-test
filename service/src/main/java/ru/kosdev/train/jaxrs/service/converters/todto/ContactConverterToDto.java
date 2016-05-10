@@ -56,12 +56,12 @@ public class ContactConverterToDto implements Function<Contact, ContactDto> {
             contactDto.setAdditionalInfoList(additionalInfos);
         }
 
-        if (contact.getAddresses() != null) {
-            List<AddressDto> addresses = contact.getAddresses()
+        if (contact.getAddressList() != null) {
+            List<AddressDto> addresses = contact.getAddressList()
                     .stream()
                     .map(addressFunction)
                     .collect(Collectors.toList());
-            contactDto.setAddresses(addresses);
+            contactDto.setAddressList(addresses);
         }
 
         return contactDto;
