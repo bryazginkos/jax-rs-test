@@ -29,7 +29,7 @@ module.controller('mainCtrl', function($scope, $http) {
         }, function errorCallback(response) {
             alert('Error');
         });
-    }
+    };
 
     $scope.showAll = function () {
         $http({
@@ -41,7 +41,26 @@ module.controller('mainCtrl', function($scope, $http) {
         }, function errorCallback(response) {
             alert('Error');
         });
-    }
+    };
+
+    $scope.editContact = function (contact) {
+        $scope.contact = contact; //todo additional info structure
+    };
+
+    $scope.resetContact = function () {
+        $scope.contract = {};
+    };
+
+    $scope.deleteContact = function (id) {
+        $http({
+            method: 'DELETE',
+            url: '/api/contact/' + id
+        }).then(function successCallback(response) {
+            alert('Ok');
+        }, function errorCallback(response) {
+            alert('Error');
+        });
+    };
 });
 
 function createAdditionalInfoList(additionalFields) {

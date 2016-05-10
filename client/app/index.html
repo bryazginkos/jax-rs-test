@@ -20,7 +20,7 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Add Contact
+                {{contract.id == undefined ? 'Add Contact' : 'Edit Contract'}}
             </div>
             <div class="panel-body">
                 <div class="form-group">
@@ -37,7 +37,8 @@
                 <contact-additional-fields additional-fields="contact.additionalFields"></contact-additional-fields>
             </div>
             <div class="panel-footer text-right">
-                <a class="btn btn-success" ng-click="addContact()">Add Contact</a>
+                <a class="btn btn-info" ng-click="resetContact()">Clear</a>
+                <a class="btn btn-success" ng-click="addContact()">{{contract.id == undefined ? 'Add Contact' : 'Edit Contract'}}</a>
             </div>
         </div>
     </div>
@@ -57,16 +58,21 @@
                         <th>Groups</th>
                         <th>Addresses</th>
                         <th>Additional info</th>
+                        <td>Action</td>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="contact in contacts track by $index">
-                        <th>{{contact.id}}</th>
-                        <th>{{contact.name}}</th>
-                        <th>{{contact.imageName}}</th>
-                        <th>{{contact.groupList}}</th>
-                        <th>{{contact.addressList}}</th>
-                        <th>{{contact.additionalInfoList}}</th>
+                    <tr ng-repeat="savedContact in contacts track by $index">
+                        <td>{{savedContact.id}}</td>
+                        <td>{{savedContact.name}}</td>
+                        <td>{{savedContact.imageName}}</td>
+                        <td>{{savedContact.groupList}}</td>
+                        <td>{{savedContact.addressList}}</td>
+                        <td>{{savedContact.additionalInfoList}}</td>
+                        <td>
+                            <a class="btn btn-primary" ng-click="editContact(savedContact)">Edit</a>
+                            <a class="btn btn-danger" ng-click="deleteContact(savedContact.id)">Delete</a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
