@@ -43,8 +43,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void deleteContact(Integer contactId) {
-        //// TODO: 07.05.16  
+        contactRepository.delete(contactId);
     }
 
     @Override

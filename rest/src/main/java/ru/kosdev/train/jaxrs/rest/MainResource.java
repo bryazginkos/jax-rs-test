@@ -10,6 +10,7 @@ import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -47,8 +48,9 @@ public class MainResource  {
 
     @DELETE
     @Path("contact/{id}")
-    public void deleteContact(@PathParam(value = "id") Integer contactId) {
-
+    public Response deleteContact(@PathParam(value = "id") Integer contactId) {
+        userService.deleteContact(contactId);
+        return Response.status(200).build();
     }
 
     @GET
