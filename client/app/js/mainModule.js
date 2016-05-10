@@ -18,17 +18,15 @@ module.controller('addCtrl', function($scope, $http) {
             addressList: $scope.addressList,
             additionalInfoList: createAdditionalInfoList($scope.additionalFields)
         };
-        
+
         $http({
             method: 'POST',
             url: '/api/contact',
             data : contact,
         }).then(function successCallback(response) {
-            // this callback will be called asynchronously
-            // when the response is available
+            alert('Ok');
         }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
+            alert('Error');
         });
     }
 });
@@ -63,3 +61,17 @@ function createAdditionalInfoList(additionalFields) {
     });
     return additionalInfoList;
 };
+
+module.controller('showCtrl', function($scope, $http) {
+    $scope.showAll = function () {
+        $http({
+            method: 'GET',
+            url: '/api/contacts'
+        }).then(function successCallback(response) {
+            alert('Ok');
+            $scope.contacts = response.data;
+        }, function errorCallback(response) {
+            alert('Error');
+        });
+    }
+});
