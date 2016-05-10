@@ -20,7 +20,6 @@ import java.util.UUID;
 /**
  * Created by kbryazgin on 5/6/2016.
  */
-@Path("/api")
 @Controller
 public class MainResource  {
 
