@@ -20,7 +20,7 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                {{contract.id == undefined ? 'Add Contact' : 'Edit Contract'}}
+                {{contact.id == undefined ? 'Add Contact' : 'Edit Contract'}}
             </div>
             <div class="panel-body">
                 <div class="form-group">
@@ -38,7 +38,7 @@
             </div>
             <div class="panel-footer text-right">
                 <a class="btn btn-info" ng-click="resetContact()">Clear</a>
-                <a class="btn btn-success" ng-click="addContact()">{{contract.id == undefined ? 'Add Contact' : 'Edit Contract'}}</a>
+                <a class="btn btn-success" ng-click="addContact()">{{contact.id == undefined ? 'Add Contact' : 'Edit Contract'}}</a>
             </div>
         </div>
     </div>

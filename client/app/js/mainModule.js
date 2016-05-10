@@ -13,6 +13,7 @@ module.controller('mainCtrl', function($scope, $http) {
 
     $scope.addContact = function () {
         var contact = {
+            id : $scope.contact.id,
             name: $scope.contact.name,
             imageName: $scope.contact.imageName,
             groupList: $scope.contact.groupList,
@@ -44,11 +45,18 @@ module.controller('mainCtrl', function($scope, $http) {
     };
 
     $scope.editContact = function (contact) {
-        $scope.contact = contact; //todo additional info structure
+        $scope.contact = {
+            id : contact.id,
+            name : contact.name,
+            imageName : contact.imageName,
+            groupList : contact.groupList,
+            addressList : contact.addressList,
+            additionalFields : createAdditionalFields(contact.additionalInfoList)
+        };
     };
 
     $scope.resetContact = function () {
-        $scope.contract = {};
+        $scope.contact = {};
     };
 
     $scope.deleteContact = function (id) {
@@ -65,32 +73,61 @@ module.controller('mainCtrl', function($scope, $http) {
 
 function createAdditionalInfoList(additionalFields) {
     var additionalInfoList = [];
-    additionalFields.forEach(function (additionalField) {
-        if (additionalField != null) {
-            switch (additionalField.type) {
-                case 1: {
-                    additionalInfoList.push({dateValue : additionalField.value});
-                    break;
-                }
-                case 2: {
-                    additionalInfoList.push({urlValue : additionalField.value});
-                    break;
-                }
-                case 3: {
-                    additionalInfoList.push({textValue : additionalField.value});
-                    break;
-                }
-                case 4: {
-                    additionalInfoList.push({intValue : additionalField.value});
-                    break;
-                }
-                case 5: {
-                    additionalInfoList.push({emailValue : additionalField.value});
-                    break;
+    if (additionalFields != undefined) {
+        additionalFields.forEach(function (additionalField) {
+            if (additionalField != undefined) {
+                switch (additionalField.type) {
+                    case 1:
+                    {
+                        additionalInfoList.push({dateValue: additionalField.value});
+                        break;
+                    }
+                    case 2:
+                    {
+                        additionalInfoList.push({urlValue: additionalField.value});
+                        break;
+                    }
+                    case 3:
+                    {
+                        additionalInfoList.push({textValue: additionalField.value});
+                        break;
+                    }
+                    case 4:
+                    {
+                        additionalInfoList.push({intValue: additionalField.value});
+                        break;
+                    }
+                    case 5:
+                    {
+                        additionalInfoList.push({emailValue: additionalField.value});
+                        break;
+                    }
                 }
             }
-        }
-    });
+        });
+    }
     return additionalInfoList;
+};
+
+function createAdditionalFields(additionalInfoList) {
+    var additionalFields = [];
+    if (additionalInfoList != undefined) {
+        additionalInfoList.forEach(function (additionalInfo) {
+            if (additionalInfo != undefined) {
+                if (additionalInfo.dateValue != undefined) {
+                    additionalFields.push({type: 1, value: additionalInfo.dateValue});
+                } else if (additionalInfo.urlValue != undefined) {
+                    additionalFields.push({type: 2, value: additionalInfo.urlValue})
+                } else if (additionalInfo.textValue != undefined) {
+                    additionalFields.push({type: 3, value: additionalInfo.textValue})
+                } else if (additionalInfo.intValue != undefined) {
+                    additionalFields.push({type: 4, value: additionalInfo.intValue})
+                } else if (additionalInfo.emailValue != undefined) {
+                    additionalFields.push({type: 5, value: additionalInfo.emailValue})
+                }
+            }
+        });
+    }
+    return additionalFields;
 };
 
