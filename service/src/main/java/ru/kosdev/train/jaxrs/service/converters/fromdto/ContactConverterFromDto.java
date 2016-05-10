@@ -56,8 +56,8 @@ public class ContactConverterFromDto implements Function<ContactDto, Contact> {
             contact.setAdditionalInfoList(additionalInfos);
         }
 
-        if (contactDto.getAddresses() != null) {
-            List<Address> addresses = contactDto.getAddresses()
+        if (contactDto.getAddressList() != null) {
+            List<Address> addresses = contactDto.getAddressList()
                     .stream()
                     .map(addressFunction)
                     .collect(Collectors.toList());
