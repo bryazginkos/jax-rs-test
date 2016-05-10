@@ -1,7 +1,7 @@
 /**
  * Created by kos on 08.05.16.
  */
-var module = angular.module('app', ['utilModule']);
+var module = angular.module('app', ['utilModule', 'ngFileUpload']);
 
 module.controller('mainCtrl', function($scope, $http) {
     $scope.contact = {};
@@ -130,4 +130,29 @@ function createAdditionalFields(additionalInfoList) {
     }
     return additionalFields;
 };
+
+
+module.controller('uploadCtrl', ['$scope', 'Upload', function ($scope, Upload) {
+    // upload later on form submit or something similar
+    $scope.submit = function() {
+        if ($scope.form.file.$valid && $scope.file) {
+            $scope.upload($scope.file);
+        }
+    };
+
+    // upload on file select or drop
+    $scope.upload = function (file) {
+        Upload.upload({
+            url: '/api/upload',
+            data: {file: file}
+        }).then(function (resp) {
+            $scope.imageName = resp.data;
+        }, function (resp) {
+            alert('Error status: ' + resp.status);
+        }, function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+        });
+    };
+}]);
 
