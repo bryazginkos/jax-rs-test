@@ -40,8 +40,9 @@ public class MainResource  {
     @POST
     @Path("contact")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void save(@Valid ContactDto contactDto) throws ServiceException {
+    public Response save(@Valid ContactDto contactDto) throws ServiceException {
         userService.updateContact(contactDto);
+        return Response.status(Response.Status.OK).build();
     }
 
     @DELETE
@@ -49,7 +50,7 @@ public class MainResource  {
     public Response deleteContact(@NotBlank(message = "empty contact id")
                                       @PathParam(value = "id") Integer contactId) {
         userService.deleteContact(contactId);
-        return Response.status(200).build();
+        return Response.status(Response.Status.OK).build();
     }
 
     @GET
@@ -57,22 +58,24 @@ public class MainResource  {
     @Produces(MediaType.APPLICATION_JSON)
     public List<ContactDto> showContacts(@QueryParam("start") Integer start,
                                          @QueryParam("max") Integer max) {
-        List<ContactDto> contactDtoList = userService.showContacts(start, max);
-        return contactDtoList;
+        return userService.showContacts(start, max);
     }
 
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("upload")
-    public String uploadImage(@FormDataParam("file") InputStream inputStream,
+    public Response uploadImage(@FormDataParam("file") InputStream inputStream,
                               @FormDataParam("file") FormDataContentDisposition fileMetaData) {
         UUID filename = UUID.randomUUID();
         try {
             Files.copy(inputStream, Paths.get(imagesPath + filename));
         } catch (IOException e) {
-            throw new WebApplicationException("Error while uploading file. Please try again !!");
+            throw new ServiceException(e.getMessage());
         }
-        return filename.toString();
+        return Response
+                .status(Response.Status.OK)
+                .entity(filename.toString())
+                .build();
     }
 
     @GET
@@ -86,6 +89,8 @@ public class MainResource  {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(image, "jpeg", baos);
         byte[] imageData = baos.toByteArray();
-        return Response.ok(imageData).build();
+        return Response
+                .ok(imageData)
+                .build();
     }
 }

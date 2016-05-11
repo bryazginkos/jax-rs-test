@@ -28,7 +28,7 @@ module.controller('mainCtrl', function($scope, $http) {
         }).then(function successCallback(response) {
             alert('Ok');
         }, function errorCallback(response) {
-            alert('Error');
+            alert('Error: status=' + response.status + ' message=' + response.data);
         });
     };
 
@@ -40,7 +40,7 @@ module.controller('mainCtrl', function($scope, $http) {
             alert('Ok');
             $scope.contacts = response.data;
         }, function errorCallback(response) {
-            alert('Error');
+            alert('Error: status=' + response.status + ' message=' + response.data);
         });
     };
 
@@ -66,7 +66,7 @@ module.controller('mainCtrl', function($scope, $http) {
         }).then(function successCallback(response) {
             alert('Ok');
         }, function errorCallback(response) {
-            alert('Error');
+            alert('Error: status=' + response.status + ' message=' + response.data);
         });
     };
 });
@@ -147,8 +147,8 @@ module.controller('uploadCtrl', ['$scope', 'Upload', function ($scope, Upload) {
             data: {file: file}
         }).then(function (resp) {
             $scope.imageName = resp.data;
-        }, function (resp) {
-            alert('Error status: ' + resp.status);
+        }, function (response) {
+            alert('Error: status=' + response.status + ' message=' + data);
         }, function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
