@@ -5,7 +5,7 @@ package ru.kosdev.train.jaxrs.rest.exceptions;
  */
 public class ServiceException extends RuntimeException {
 
-    public ServiceException(String message) {
+    public ServiceException(final String message) {
         super(message);
     }
 }

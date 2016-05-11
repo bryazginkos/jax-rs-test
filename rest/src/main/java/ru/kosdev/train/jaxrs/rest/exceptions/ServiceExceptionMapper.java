@@ -10,7 +10,7 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class ServiceExceptionMapper implements ExceptionMapper<ServiceException> {
     @Override
-    public Response toResponse(ServiceException e) {
+    public Response toResponse(final ServiceException e) {
         return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                 .entity(e.getMessage())
                 .build();

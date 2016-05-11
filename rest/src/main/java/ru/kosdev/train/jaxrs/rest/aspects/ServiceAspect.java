@@ -14,9 +14,9 @@ import ru.kosdev.train.jaxrs.rest.exceptions.ServiceException;
 public class ServiceAspect {
 
     @Around("within(ru.kosdev.train.jaxrs.service.api.contract.UserService+)")
-    public Object wrapExceptions(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object wrapExceptions(final ProceedingJoinPoint joinPoint) throws ServiceException {
         try {
-            return joinPoint.proceed(); //continue on the intercepted method
+            return joinPoint.proceed();
         } catch (Throwable e) {
             throw new ServiceException(e.getMessage());
         }

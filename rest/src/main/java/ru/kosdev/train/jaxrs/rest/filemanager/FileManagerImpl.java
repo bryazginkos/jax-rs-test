@@ -24,8 +24,8 @@ public class FileManagerImpl implements FileManager {
     private String imagesPath;
 
     @Override
-    public String save(InputStream inputStream) {
-        UUID filename = UUID.randomUUID();
+    public String save(final InputStream inputStream) {
+        final UUID filename = UUID.randomUUID();
         try {
             Files.copy(inputStream, Paths.get(imagesPath + filename));
         } catch (IOException e) {
@@ -35,10 +35,10 @@ public class FileManagerImpl implements FileManager {
     }
 
     @Override
-    public byte[] get(String imageName) {
+    public byte[] get(final String imageName) {
         try {
-            BufferedImage image = ImageIO.read(new File(imagesPath + imageName));
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            final BufferedImage image = ImageIO.read(new File(imagesPath + imageName));
+            final ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(image, "jpeg", baos);
             return baos.toByteArray();
         } catch (IOException e) {

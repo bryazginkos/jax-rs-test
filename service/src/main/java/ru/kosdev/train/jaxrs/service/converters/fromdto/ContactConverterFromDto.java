@@ -31,17 +31,17 @@ public class ContactConverterFromDto implements Function<ContactDto, Contact> {
     private Function<GroupDto, Group> groupFunction;
 
     @Override
-    public Contact apply(ContactDto contactDto) {
+    public Contact apply(final ContactDto contactDto) {
         if (contactDto == null) {
             return null;
         }
-        Contact contact = new Contact();
+        final Contact contact = new Contact();
         contact.setId(contactDto.getId());
         contact.setName(contactDto.getName());
         contact.setImageName(contactDto.getImageName());
 
         if (contactDto.getGroupList() != null) {
-            List<Group> groups = contactDto.getGroupList()
+            final List<Group> groups = contactDto.getGroupList()
                     .stream()
                     .map(groupFunction)
                     .collect(Collectors.toList());
@@ -49,7 +49,7 @@ public class ContactConverterFromDto implements Function<ContactDto, Contact> {
         }
 
         if (contactDto.getAdditionalInfoList() != null) {
-            List<AdditionalInfo> additionalInfos = contactDto.getAdditionalInfoList()
+            final List<AdditionalInfo> additionalInfos = contactDto.getAdditionalInfoList()
                     .stream()
                     .map(additionalInfoFunction)
                     .collect(Collectors.toList());
@@ -57,7 +57,7 @@ public class ContactConverterFromDto implements Function<ContactDto, Contact> {
         }
 
         if (contactDto.getAddressList() != null) {
-            List<Address> addresses = contactDto.getAddressList()
+            final List<Address> addresses = contactDto.getAddressList()
                     .stream()
                     .map(addressFunction)
                     .collect(Collectors.toList());

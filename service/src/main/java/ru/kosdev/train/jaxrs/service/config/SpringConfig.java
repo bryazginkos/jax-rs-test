@@ -11,8 +11,8 @@ import ru.kosdev.train.jaxrs.service.services.UserServiceImpl;
  * Created by Константин on 07.05.2016.
  */
 @Configuration
-@ComponentScan(basePackages = {"ru.kosdev.train.jaxrs.service.converters"})
-@Import(value = {ru.kosdev.train.jaxrs.repository.config.SpringConfig.class})
+@ComponentScan(basePackages = {"ru.kosdev.train.jaxrs.service.converters" })
+@Import(ru.kosdev.train.jaxrs.repository.config.SpringConfig.class)
 public class SpringConfig {
 
     @Bean

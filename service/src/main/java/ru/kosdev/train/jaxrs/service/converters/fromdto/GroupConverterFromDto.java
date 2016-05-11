@@ -13,11 +13,11 @@ import java.util.function.Function;
 public class GroupConverterFromDto implements Function<GroupDto, Group> {
 
     @Override
-    public Group apply(GroupDto groupDto) {
+    public Group apply(final GroupDto groupDto) {
         if (groupDto == null) {
             return null;
         }
-        Group group = new Group();
+        final Group group = new Group();
         group.setId(groupDto.getId());
         group.setName(groupDto.getName());
         return group;

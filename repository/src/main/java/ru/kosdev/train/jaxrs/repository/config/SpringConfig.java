@@ -22,7 +22,7 @@ import java.util.Properties;
  * Created by kos on 07.05.16.
  */
 @Configuration
-@ComponentScan(basePackages = {"ru.kosdev.train.jaxrs.repository.dao"})
+@ComponentScan(basePackages = {"ru.kosdev.train.jaxrs.repository.dao" })
 @EnableJpaRepositories("ru.kosdev.train.jaxrs.repository.dao")
 @EnableTransactionManagement
 public class SpringConfig {
@@ -31,7 +31,7 @@ public class SpringConfig {
 
     @Bean
     public DataSource dataSource() {
-        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+        final EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         return builder
                 .setName(DB_NAME)
                 .setType(EmbeddedDatabaseType.H2)
@@ -40,7 +40,7 @@ public class SpringConfig {
 
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
-        HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
+        final HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
         hibernateJpaVendorAdapter.setShowSql(true);
         hibernateJpaVendorAdapter.setDatabase(Database.HSQL);
         return hibernateJpaVendorAdapter;
@@ -48,7 +48,7 @@ public class SpringConfig {
 
     @Bean
     Properties jpaProperties() {
-        Properties jpaProperties = new Properties();
+        final Properties jpaProperties = new Properties();
         jpaProperties.put(org.hibernate.cfg.Environment.DIALECT, "org.hibernate.dialect.H2Dialect");
         jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, "update");
         return jpaProperties;
@@ -56,7 +56,8 @@ public class SpringConfig {
 
     @Bean
     public EntityManagerFactory entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+        final LocalContainerEntityManagerFactoryBean entityManagerFactoryBean =
+                new LocalContainerEntityManagerFactoryBean();
 
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPersistenceProvider(new HibernatePersistenceProvider());

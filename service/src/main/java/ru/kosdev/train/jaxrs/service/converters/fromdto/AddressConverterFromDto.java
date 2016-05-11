@@ -12,11 +12,11 @@ import java.util.function.Function;
 @Service
 public class AddressConverterFromDto implements Function<AddressDto, Address> {
     @Override
-    public Address apply(AddressDto addressDto) {
+    public Address apply(final AddressDto addressDto) {
         if (addressDto == null) {
             return null;
         }
-        Address address = new Address();
+        final Address address = new Address();
         address.setValue(addressDto.getValue());
         return address;
     }

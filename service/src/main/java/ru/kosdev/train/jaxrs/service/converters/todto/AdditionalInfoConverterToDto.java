@@ -12,11 +12,11 @@ import java.util.function.Function;
 @Service
 public class AdditionalInfoConverterToDto implements Function<AdditionalInfo, AdditionalInfoDto> {
     @Override
-    public AdditionalInfoDto apply(AdditionalInfo additionalInfo) {
+    public AdditionalInfoDto apply(final AdditionalInfo additionalInfo) {
         if (additionalInfo == null) {
             return null;
         }
-        AdditionalInfoDto additionalInfoDto = new AdditionalInfoDto();
+        final AdditionalInfoDto additionalInfoDto = new AdditionalInfoDto();
         additionalInfoDto.setUrlValue(additionalInfo.getUrlValue());
         additionalInfoDto.setTextValue(additionalInfo.getTextValue());
         additionalInfoDto.setIntValue(additionalInfo.getIntValue());

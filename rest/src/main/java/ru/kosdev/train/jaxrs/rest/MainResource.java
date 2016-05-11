@@ -33,14 +33,14 @@ public class MainResource  {
     @POST
     @Path("contact")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response save(@Valid ContactDto contactDto) throws ServiceException {
+    public Response save(@Valid final ContactDto contactDto) throws ServiceException {
         userService.updateContact(contactDto);
         return Response.status(Response.Status.OK).build();
     }
 
     @DELETE
     @Path("contact/{id}")
-    public Response deleteContact(@PathParam(value = "id") Integer contactId) {
+    public Response deleteContact(@PathParam(value = "id") final Integer contactId) {
         userService.deleteContact(contactId);
         return Response.status(Response.Status.OK).build();
     }
@@ -48,17 +48,17 @@ public class MainResource  {
     @GET
     @Path("contacts")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ContactDto> showContacts(@QueryParam("start") Integer start,
-                                         @QueryParam("max") Integer max) {
+    public List<ContactDto> showContacts(@QueryParam("start") final Integer start,
+                                         @QueryParam("max") final Integer max) {
         return userService.showContacts(start, max);
     }
 
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("upload")
-    public Response uploadImage(@FormDataParam("file") InputStream inputStream,
-                              @FormDataParam("file") FormDataContentDisposition fileMetaData) {
-        String imageName = fileManager.save(inputStream);
+    public Response uploadImage(@FormDataParam("file") final InputStream inputStream,
+                              @FormDataParam("file") final FormDataContentDisposition fileMetaData) {
+        final String imageName = fileManager.save(inputStream);
         return Response
                 .status(Response.Status.OK)
                 .entity(imageName)
@@ -69,8 +69,8 @@ public class MainResource  {
     @Path("image")
     @Produces("image/jpeg")
     public Response getFullImage(@NotBlank(message = "empty image name")
-                                     @QueryParam("name") String imageName) {
-        byte[] bytes = fileManager.get(imageName);
+                                     @QueryParam("name") final String imageName) {
+        final byte[] bytes = fileManager.get(imageName);
         return Response
                 .ok(bytes)
                 .build();

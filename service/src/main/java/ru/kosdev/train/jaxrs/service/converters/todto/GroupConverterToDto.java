@@ -12,11 +12,11 @@ import java.util.function.Function;
 @Service
 public class GroupConverterToDto implements Function<Group, GroupDto> {
     @Override
-    public GroupDto apply(Group group) {
+    public GroupDto apply(final Group group) {
         if (group == null) {
             return null;
         }
-        GroupDto groupDto = new GroupDto();
+        final GroupDto groupDto = new GroupDto();
         groupDto.setId(group.getId());
         groupDto.setName(group.getName());
         return groupDto;

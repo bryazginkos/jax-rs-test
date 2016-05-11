@@ -33,8 +33,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void updateContact(ContactDto contactDto) {
-        Contact contact = converterFromDto.apply(contactDto);
+    public void updateContact(final ContactDto contactDto) {
+        final Contact contact = converterFromDto.apply(contactDto);
         if (contact.getGroupList() != null) {
             groupRepository.save(contact.getGroupList());
         }
@@ -43,15 +43,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void deleteContact(Integer contactId) {
+    public void deleteContact(final Integer contactId) {
         contactRepository.delete(contactId);
     }
 
+
     @Override
     @Transactional
-    public List<ContactDto> showContacts(Integer start, Integer maxNumber) {
-        Iterable<Contact> contacts = contactRepository.findAll();//// TODO: 5/10/2016  pages
-        List<ContactDto> contactDtoList = new ArrayList<>();
+    // TODO: 5/10/2016  pages
+    public List<ContactDto> showContacts(final Integer start, final Integer maxNumber) {
+        final Iterable<Contact> contacts = contactRepository.findAll();
+
+        final List<ContactDto> contactDtoList = new ArrayList<>();
+
         contacts.forEach(contact -> contactDtoList.add(converterToDto.apply(contact)));
         return contactDtoList;
     }

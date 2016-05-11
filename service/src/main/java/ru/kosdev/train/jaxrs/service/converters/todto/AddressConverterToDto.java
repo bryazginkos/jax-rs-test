@@ -13,11 +13,11 @@ import java.util.function.Function;
 public class AddressConverterToDto implements Function<Address, AddressDto> {
 
     @Override
-    public AddressDto apply(Address address) {
+    public AddressDto apply(final Address address) {
         if (address == null) {
             return null;
         }
-        AddressDto addressDto = new AddressDto();
+        final AddressDto addressDto = new AddressDto();
         addressDto.setValue(address.getValue());
         return addressDto;
     }
