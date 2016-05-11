@@ -40,7 +40,7 @@ public class MainResource  {
     @POST
     @Path("contact")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void save(@Valid ContactDto contactDto) {
+    public void save(@Valid ContactDto contactDto) throws ServiceException {
         userService.updateContact(contactDto);
     }
 
