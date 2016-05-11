@@ -8,9 +8,13 @@ import org.springframework.stereotype.Controller;
 import ru.kosdev.train.jaxrs.service.api.contract.UserService;
 import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 
+import javax.imageio.ImageIO;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -74,5 +78,18 @@ public class MainResource  {
             throw new WebApplicationException("Error while uploading file. Please try again !!");
         }
         return filename.toString();
+    }
+
+    @GET
+    @Path("image")
+    @Produces("image/jpeg")
+    public Response getFullImage(@QueryParam("name") String imageName) throws IOException {
+
+        BufferedImage image = ImageIO.read(new File(imagesPath + imageName));
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(image, "jpeg", baos);
+        byte[] imageData = baos.toByteArray();
+        return Response.ok(imageData).build();
     }
 }

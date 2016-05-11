@@ -66,7 +66,9 @@
                     <tr ng-repeat="savedContact in contacts track by $index">
                         <td>{{savedContact.id}}</td>
                         <td>{{savedContact.name}}</td>
-                        <td>{{savedContact.imageName}}</td>
+                        <td>
+                            <img ng-src="/api/image?name={{savedContact.imageName}}" class="avatar"/>
+                        </td>
                         <td>{{savedContact.groupList}}</td>
                         <td>{{savedContact.addressList}}</td>
                         <td>{{savedContact.additionalInfoList}}</td>
@@ -90,7 +92,7 @@
             <div class="panel-heading">File upload</div>
             <div class="panel-body">
                 <form ng-controller="uploadCtrl" name="form">
-                    <a class="btn btn-default" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+                    <a class="btn btn-default" ngf-select ng-model="file" name="file" ngf-pattern="'image/jpeg'"
                        ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
                        ngf-resize="{width: 100, height: 100}">Select</a> {{file.$ngfName}}
                     <a class="btn btn-success" type="submit" ng-click="submit()">submit</a>
