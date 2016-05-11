@@ -4,25 +4,16 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import ru.kosdev.train.jaxrs.service.api.contract.UserService;
 import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 
-import javax.imageio.ImageIO;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by kbryazgin on 5/6/2016.
@@ -31,8 +22,8 @@ import java.util.UUID;
 @Path("/")
 public class MainResource  {
 
-    @Value("${images.dir}")
-    private String imagesPath;
+    @Autowired
+    private FileManager fileManager;
 
     @Autowired
     private UserService userService;
@@ -66,15 +57,10 @@ public class MainResource  {
     @Path("upload")
     public Response uploadImage(@FormDataParam("file") InputStream inputStream,
                               @FormDataParam("file") FormDataContentDisposition fileMetaData) {
-        UUID filename = UUID.randomUUID();
-        try {
-            Files.copy(inputStream, Paths.get(imagesPath + filename));
-        } catch (IOException e) {
-            throw new ServiceException(e.getMessage());
-        }
+        String imageName = fileManager.save(inputStream);
         return Response
                 .status(Response.Status.OK)
-                .entity(filename.toString())
+                .entity(imageName)
                 .build();
     }
 
@@ -82,15 +68,10 @@ public class MainResource  {
     @Path("image")
     @Produces("image/jpeg")
     public Response getFullImage(@NotBlank(message = "empty image name")
-                                     @QueryParam("name") String imageName) throws IOException {
-
-        BufferedImage image = ImageIO.read(new File(imagesPath + imageName));
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(image, "jpeg", baos);
-        byte[] imageData = baos.toByteArray();
+                                     @QueryParam("name") String imageName) {
+        byte[] bytes = fileManager.get(imageName);
         return Response
-                .ok(imageData)
+                .ok(bytes)
                 .build();
     }
 }
