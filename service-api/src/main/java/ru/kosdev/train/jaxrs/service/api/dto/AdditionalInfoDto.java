@@ -2,7 +2,9 @@ package ru.kosdev.train.jaxrs.service.api.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Email;
 
+import javax.validation.constraints.Max;
 import java.util.Date;
 
 /**
@@ -19,9 +21,9 @@ public class AdditionalInfoDto {
     @Getter @Setter
     private String textValue;
 
-    @Getter @Setter
+    @Getter @Setter @Max(value = 100, message = "The int is bigger than 100")
     private Integer intValue;
 
-    @Getter @Setter
+    @Getter @Setter @Email(message = "email is invalid")
     private String emailValue;
 }

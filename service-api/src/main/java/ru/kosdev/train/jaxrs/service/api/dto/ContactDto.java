@@ -2,7 +2,9 @@ package ru.kosdev.train.jaxrs.service.api.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -14,18 +16,18 @@ public class ContactDto {
     @Setter
     private Integer id;
 
-    @Getter @Setter
+    @Getter @Setter @NotBlank(message = "contact name is blank")
     private String name;
 
-    @Getter @Setter
+    @Getter @Setter @Valid
     private List<GroupDto> groupList;
 
-    @Getter @Setter
+    @Getter @Setter @NotBlank(message = "image name is blank")
     private String imageName;
 
-    @Getter @Setter
+    @Getter @Setter @Valid
     private List<AddressDto> addressList;
 
-    @Getter @Setter
+    @Getter @Setter @Valid
     private List<AdditionalInfoDto> additionalInfoList;
 }

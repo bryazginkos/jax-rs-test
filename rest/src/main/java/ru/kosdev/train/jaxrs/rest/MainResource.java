@@ -2,6 +2,7 @@ package ru.kosdev.train.jaxrs.rest;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import ru.kosdev.train.jaxrs.service.api.contract.UserService;
 import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 
 import javax.imageio.ImageIO;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -35,24 +37,17 @@ public class MainResource  {
     @Autowired
     private UserService userService;
 
-    @PUT
-    @Path("contact")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void updateContact(ContactDto contactDto) {
-
-    }
-
     @POST
     @Path("contact")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void save(ContactDto contactDto) {
+    public void save(@Valid ContactDto contactDto) {
         userService.updateContact(contactDto);
     }
 
-
     @DELETE
     @Path("contact/{id}")
-    public Response deleteContact(@PathParam(value = "id") Integer contactId) {
+    public Response deleteContact(@NotBlank(message = "empty contact id")
+                                      @PathParam(value = "id") Integer contactId) {
         userService.deleteContact(contactId);
         return Response.status(200).build();
     }
@@ -83,7 +78,8 @@ public class MainResource  {
     @GET
     @Path("image")
     @Produces("image/jpeg")
-    public Response getFullImage(@QueryParam("name") String imageName) throws IOException {
+    public Response getFullImage(@NotBlank(message = "empty image name")
+                                     @QueryParam("name") String imageName) throws IOException {
 
         BufferedImage image = ImageIO.read(new File(imagesPath + imageName));
 
