@@ -35,9 +35,8 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void updateContact(ContactDto contactDto) {
         Contact contact = converterFromDto.apply(contactDto);
-
         if (contact.getGroupList() != null) {
-            contact.getGroupList().forEach(groupRepository::save);
+            groupRepository.save(contact.getGroupList());
         }
         contactRepository.save(contact);
     }
