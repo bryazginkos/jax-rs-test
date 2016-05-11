@@ -38,8 +38,7 @@ public class MainResource  {
 
     @DELETE
     @Path("contact/{id}")
-    public Response deleteContact(@NotBlank(message = "empty contact id")
-                                      @PathParam(value = "id") Integer contactId) {
+    public Response deleteContact(@PathParam(value = "id") Integer contactId) {
         userService.deleteContact(contactId);
         return Response.status(Response.Status.OK).build();
     }
