@@ -1,9 +1,10 @@
-package ru.kosdev.train.jaxrs.rest;
+package ru.kosdev.train.jaxrs.rest.aspects;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
+import ru.kosdev.train.jaxrs.rest.exceptions.ServiceException;
 
 /**
  * Created by kbryazgin on 5/11/2016.

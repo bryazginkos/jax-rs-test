@@ -1,7 +1,8 @@
-package ru.kosdev.train.jaxrs.rest;
+package ru.kosdev.train.jaxrs.rest.filemanager;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import ru.kosdev.train.jaxrs.rest.exceptions.ServiceException;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
+import ru.kosdev.train.jaxrs.rest.exceptions.ServiceExceptionMapper;
 
 import javax.ws.rs.ApplicationPath;
 

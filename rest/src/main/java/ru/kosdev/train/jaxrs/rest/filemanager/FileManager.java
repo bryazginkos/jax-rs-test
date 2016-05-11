@@ -1,4 +1,4 @@
-package ru.kosdev.train.jaxrs.rest;
+package ru.kosdev.train.jaxrs.rest.filemanager;
 
 import java.io.InputStream;
 

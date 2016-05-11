@@ -5,6 +5,8 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import ru.kosdev.train.jaxrs.rest.exceptions.ServiceException;
+import ru.kosdev.train.jaxrs.rest.filemanager.FileManager;
 import ru.kosdev.train.jaxrs.service.api.contract.UserService;
 import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 
