@@ -15,6 +15,7 @@ public class App extends ResourceConfig {
 
     public App() {
         property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, true);
+        register(ServiceExceptionMapper.class);
 
         JacksonJaxbJsonProvider jsonProvider = new JacksonJaxbJsonProvider();
         jsonProvider.setMapper(new CustomObjectMapper());
