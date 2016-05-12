@@ -28,7 +28,7 @@ public interface ImageResource {
                          @FormDataParam("file") FormDataContentDisposition fileMetaData);
 
     /**
-     * Returns image by key
+     * Returns image by key.
      * @param imageName
      * @return
      */

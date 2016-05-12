@@ -28,7 +28,7 @@ public interface ContactResource {
     Response save(@Valid ContactDto contactDto) throws ServiceException;
 
     /**
-     * Deletes contact
+     * Deletes contact.
      * @param contactId
      * @return
      */
@@ -37,7 +37,7 @@ public interface ContactResource {
     Response deleteContact(@PathParam(value = "id") Integer contactId);
 
     /**
-     * Show contacts
+     * Show contacts.
      * @param page
      * @param size
      * @return
