@@ -143,7 +143,7 @@ module.controller('uploadCtrl', ['$scope', 'Upload', function ($scope, Upload) {
     // upload on file select or drop
     $scope.upload = function (file) {
         Upload.upload({
-            url: '/api/upload',
+            url: '/api/image',
             data: {file: file}
         }).then(function (resp) {
             $scope.imageName = resp.data;

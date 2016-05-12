@@ -57,7 +57,7 @@ public class MainResource  {
 
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Path("upload")
+    @Path("image")
     public Response uploadImage(@FormDataParam("file") final InputStream inputStream,
                               @FormDataParam("file") final FormDataContentDisposition fileMetaData) {
         final String imageName = fileManager.save(inputStream);
