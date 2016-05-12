@@ -15,15 +15,33 @@ import java.util.List;
  */
 @Path("/")
 public interface ContactResource {
+    /**
+     * Saves new contact if it doesn't have ID or else updates existing contact.
+     * All groups in contact will be modified!
+     * @param contactDto
+     * @return
+     * @throws ServiceException
+     */
     @POST
     @Path("contact")
     @Consumes(MediaType.APPLICATION_JSON)
     Response save(@Valid ContactDto contactDto) throws ServiceException;
 
+    /**
+     * Deletes contact
+     * @param contactId
+     * @return
+     */
     @DELETE
     @Path("contact/{id}")
     Response deleteContact(@PathParam(value = "id") Integer contactId);
 
+    /**
+     * Show contacts
+     * @param page
+     * @param size
+     * @return
+     */
     @GET
     @Path("contacts")
     @Produces(MediaType.APPLICATION_JSON)

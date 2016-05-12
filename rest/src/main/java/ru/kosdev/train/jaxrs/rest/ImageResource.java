@@ -15,11 +15,23 @@ import java.io.InputStream;
 @Path("/")
 public interface ImageResource {
 
+    /**
+     * Upload image. Returns the unique key (imageName) for access.
+     * @param inputStream
+     * @param fileMetaData
+     * @return
+     */
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("image")
     Response uploadImage(@FormDataParam("file") InputStream inputStream,
                          @FormDataParam("file") FormDataContentDisposition fileMetaData);
+
+    /**
+     * Returns image by key
+     * @param imageName
+     * @return
+     */
     @GET
     @Produces("image/jpeg")
     @Path("image")
