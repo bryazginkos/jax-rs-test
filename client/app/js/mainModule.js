@@ -153,7 +153,7 @@ module.controller('uploadCtrl', ['$scope', 'Upload', function ($scope, Upload) {
         }).then(function (resp) {
             $scope.imageName = resp.data;
         }, function (response) {
-            alert('Error: status=' + response.status + ' message=' + data);
+            alert('Error: status=' + response.status + ' message=' + response.data);
         }, function (evt) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
