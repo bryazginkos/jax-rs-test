@@ -13,6 +13,9 @@ utilModule.directive('contactGroups', function() {
         },
         link : function ($scope) {
             $scope.addGroup = function () {
+                if ($scope.groups == null) {
+                    $scope.groups = [];
+                }
                 $scope.groups.push({id : null, name : ''});
             };
 
@@ -33,6 +36,9 @@ utilModule.directive('contactAddresses', function() {
         },
         link : function ($scope) {
             $scope.addAddress = function () {
+                if ($scope.addresses == null) {
+                    $scope.addresses = [];
+                }
                 $scope.addresses.push({value: ''});
             };
 
@@ -53,6 +59,9 @@ utilModule.directive('contactAdditionalFields', function() {
         },
         link : function ($scope) {
             $scope.addAdditionalField = function () {
+                if ($scope.additionalFields == null) {
+                    $scope.additionalFields = [];
+                }
                 $scope.additionalFields.push({type : 3, value : ''});
             };
 
