@@ -28,7 +28,7 @@ module.controller('mainCtrl', function($scope, $http) {
         }).then(function successCallback(response) {
             alert('Ok');
         }, function errorCallback(response) {
-            alert('Error: status=' + response.status + ' message=' + response.data);
+            alert('Error: status=' + response.status + ' message=' + JSON.stringify(response.data));
         });
     };
 
