@@ -40,4 +40,4 @@ The client application is divided into three areas:
 * To simplify the task and to save time all groups in contact will be modified
 while editing contact.
 * **You have to fill group ID field only if you want to reference to existing group**
-
+* Before first run maven frontend plugin must download frontend dependencies. (mvn install)
