@@ -2,10 +2,7 @@ package ru.kosdev.train.jaxrs.service.converters.fromdto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.kosdev.train.jaxrs.service.api.dto.AdditionalInfoDto;
-import ru.kosdev.train.jaxrs.service.api.dto.AddressDto;
 import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
-import ru.kosdev.train.jaxrs.service.api.dto.GroupDto;
 import ru.kosdev.train.jaxrs.repository.entity.AdditionalInfo;
 import ru.kosdev.train.jaxrs.repository.entity.Address;
 import ru.kosdev.train.jaxrs.repository.entity.Contact;
@@ -22,13 +19,13 @@ import java.util.stream.Collectors;
 public class ContactConverterFromDto implements Function<ContactDto, Contact> {
 
     @Autowired
-    private Function<AdditionalInfoDto, AdditionalInfo> additionalInfoFunction;
+    private AdditionalInfoConverterFromDto additionalInfoFunction;
 
     @Autowired
-    private Function<AddressDto, Address> addressFunction;
+    private AddressConverterFromDto addressFunction;
 
     @Autowired
-    private Function<GroupDto, Group> groupFunction;
+    private GroupConverterFromDto groupFunction;
 
     @Override
     public Contact apply(final ContactDto contactDto) {

@@ -8,10 +8,11 @@ import ru.kosdev.train.jaxrs.service.api.contract.UserService;
 import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 import ru.kosdev.train.jaxrs.repository.dao.ContactRepository;
 import ru.kosdev.train.jaxrs.repository.entity.Contact;
+import ru.kosdev.train.jaxrs.service.converters.fromdto.ContactConverterFromDto;
+import ru.kosdev.train.jaxrs.service.converters.todto.ContactConverterToDto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
 /**
  * Created by Константин on 07.05.2016.
@@ -20,10 +21,10 @@ import java.util.function.Function;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private Function<ContactDto, Contact> converterFromDto;
+    private ContactConverterFromDto converterFromDto;
 
     @Autowired
-    private Function<Contact, ContactDto> converterToDto;
+    private ContactConverterToDto converterToDto;
 
     @Autowired
     private ContactRepository contactRepository;

@@ -6,10 +6,7 @@ import ru.kosdev.train.jaxrs.service.api.dto.AdditionalInfoDto;
 import ru.kosdev.train.jaxrs.service.api.dto.AddressDto;
 import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 import ru.kosdev.train.jaxrs.service.api.dto.GroupDto;
-import ru.kosdev.train.jaxrs.repository.entity.AdditionalInfo;
-import ru.kosdev.train.jaxrs.repository.entity.Address;
 import ru.kosdev.train.jaxrs.repository.entity.Contact;
-import ru.kosdev.train.jaxrs.repository.entity.Group;
 
 import java.util.List;
 import java.util.function.Function;
@@ -22,13 +19,13 @@ import java.util.stream.Collectors;
 public class ContactConverterToDto implements Function<Contact, ContactDto> {
 
     @Autowired
-    private Function<AdditionalInfo, AdditionalInfoDto> additionalInfoFunction;
+    private AdditionalInfoConverterToDto additionalInfoFunction;
 
     @Autowired
-    private Function<Address, AddressDto> addressFunction;
+    private AddressConverterToDto addressFunction;
 
     @Autowired
-    private Function<Group, GroupDto> groupFunction;
+    private GroupConverterToDto groupFunction;
 
     @Override
     public ContactDto apply(final Contact contact) {
