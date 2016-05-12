@@ -49,8 +49,8 @@ module.controller('mainCtrl', function($scope, $http) {
             id : contact.id,
             name : contact.name,
             imageName : contact.imageName,
-            groupList : contact.groupList,
-            addressList : contact.addressList,
+            groupList : copy(contact.groupList),
+            addressList : copy(contact.addressList),
             additionalFields : createAdditionalFields(contact.additionalInfoList)
         };
     };
@@ -130,6 +130,11 @@ function createAdditionalFields(additionalInfoList) {
     }
     return additionalFields;
 };
+
+function copy(obj) {
+    //todo something better
+    return JSON.parse(JSON.stringify(obj));
+}
 
 
 module.controller('uploadCtrl', ['$scope', 'Upload', function ($scope, Upload) {
