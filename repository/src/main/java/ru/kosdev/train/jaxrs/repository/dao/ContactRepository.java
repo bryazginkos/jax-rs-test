@@ -1,5 +1,6 @@
 package ru.kosdev.train.jaxrs.repository.dao;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import ru.kosdev.train.jaxrs.repository.entity.Contact;
@@ -9,4 +10,6 @@ import ru.kosdev.train.jaxrs.repository.entity.Contact;
  */
 @Repository
 public interface ContactRepository extends CrudRepository<Contact, Integer> {
+
+    Iterable<Contact> findAll(Pageable pageable);
 }

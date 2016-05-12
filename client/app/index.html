@@ -81,7 +81,12 @@
                 </table>
             </div>
             <div class="panel-footer text-right">
-                <a class="btn btn-success" ng-click="showAll()">Show contacts</a>
+                <div class="form-inline">
+                    Page : <input type="text" class="form-control" ng-model="pageNum"/>
+                    Page size : <input type="text" class="form-control" ng-model="pageSize"/>
+                    <a class="btn btn-success" ng-click="showAll()">Show contacts</a>
+                </div>
+
             </div>
         </div>
     </div>

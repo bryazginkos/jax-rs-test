@@ -11,6 +11,7 @@ import ru.kosdev.train.jaxrs.service.api.contract.UserService;
 import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -48,9 +49,9 @@ public class MainResource  {
     @GET
     @Path("contacts")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ContactDto> showContacts(@QueryParam("start") final Integer start,
-                                         @QueryParam("max") final Integer max) {
-        return userService.showContacts(start, max);
+    public List<ContactDto> showContacts(@NotNull(message = "page is null") @QueryParam("page") final Integer page,
+                                         @NotNull(message = "size is null") @QueryParam("size") final Integer size) {
+        return userService.showContacts(page, size);
     }
 
     @POST

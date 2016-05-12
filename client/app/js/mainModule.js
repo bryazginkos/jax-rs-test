@@ -35,7 +35,7 @@ module.controller('mainCtrl', function($scope, $http) {
     $scope.showAll = function () {
         $http({
             method: 'GET',
-            url: '/api/contacts'
+            url: '/api/contacts?page=' + $scope.pageNum + '&size=' + $scope.pageSize 
         }).then(function successCallback(response) {
             alert('Ok');
             $scope.contacts = response.data;

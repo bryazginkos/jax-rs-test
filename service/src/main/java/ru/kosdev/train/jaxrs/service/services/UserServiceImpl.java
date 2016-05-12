@@ -1,6 +1,7 @@
 package ru.kosdev.train.jaxrs.service.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kosdev.train.jaxrs.repository.dao.GroupRepository;
@@ -49,9 +50,9 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    // TODO: 5/10/2016  pages
-    public List<ContactDto> showContacts(final Integer start, final Integer maxNumber) {
-        final Iterable<Contact> contacts = contactRepository.findAll();
+    public List<ContactDto> showContacts(final Integer page, final Integer pageSize) {
+        PageRequest pageRequest  = new PageRequest(page - 1, pageSize);
+        final Iterable<Contact> contacts = contactRepository.findAll(pageRequest);
 
         final List<ContactDto> contactDtoList = new ArrayList<>();
 
