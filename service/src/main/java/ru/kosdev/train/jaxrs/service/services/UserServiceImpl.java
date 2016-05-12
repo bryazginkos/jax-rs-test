@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<ContactDto> showContacts(final Integer page, final Integer pageSize) {
-        PageRequest pageRequest  = new PageRequest(page - 1, pageSize);
+        final PageRequest pageRequest  = new PageRequest(page - 1, pageSize);
         final Iterable<Contact> contacts = contactRepository.findAll(pageRequest);
 
         final List<ContactDto> contactDtoList = new ArrayList<>();
