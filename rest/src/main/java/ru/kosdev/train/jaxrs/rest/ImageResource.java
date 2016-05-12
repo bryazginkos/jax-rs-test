@@ -23,6 +23,6 @@ public interface ImageResource {
     @GET
     @Produces("image/jpeg")
     @Path("image")
-    Response getFullImage(@NotBlank(message = "empty image name")
+    Response loadImage(@NotBlank(message = "empty image name")
                           @QueryParam("name") String imageName);
 }

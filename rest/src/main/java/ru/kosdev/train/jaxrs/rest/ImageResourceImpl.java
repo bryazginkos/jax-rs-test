@@ -28,7 +28,7 @@ public class ImageResourceImpl implements ImageResource {
     }
 
     @Override
-    public Response getFullImage(final String imageName) {
+    public Response loadImage(final String imageName) {
         final byte[] bytes = fileManager.get(imageName);
         return Response
                 .ok(bytes)
