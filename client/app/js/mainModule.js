@@ -5,12 +5,7 @@ var module = angular.module('app', ['utilModule', 'ngFileUpload']);
 
 module.controller('mainCtrl', function($scope, $http) {
     $scope.contact = {};
-    $scope.contact.groupList = [{id : 1, name : 'Group1'}, {id : 2, name : 'Group2'}];
-    $scope.contact.addressList = [{value : 'Address1'}, {value: 'Address2'}];
-    $scope.contact.additionalFields = [{type : 1, value : '22.05.1991'}, {type : 2, value : 'http://google.com'}];
-    $scope.contact.name = 'Kostya';
-    $scope.contact.imageName = '323';
-
+    
     $scope.addContact = function () {
         var contact = {
             id : $scope.contact.id,
