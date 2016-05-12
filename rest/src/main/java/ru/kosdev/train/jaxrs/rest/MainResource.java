@@ -36,7 +36,8 @@ public class MainResource  {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response save(@Valid final ContactDto contactDto) throws ServiceException {
         userService.updateContact(contactDto);
-        return Response.status(Response.Status.OK).build();
+        final boolean isNew = contactDto.getId() == null;
+        return Response.status(isNew ? Response.Status.CREATED : Response.Status.ACCEPTED).build();
     }
 
     @DELETE
@@ -61,7 +62,7 @@ public class MainResource  {
                               @FormDataParam("file") final FormDataContentDisposition fileMetaData) {
         final String imageName = fileManager.save(inputStream);
         return Response
-                .status(Response.Status.OK)
+                .status(Response.Status.ACCEPTED)
                 .entity(imageName)
                 .build();
     }
