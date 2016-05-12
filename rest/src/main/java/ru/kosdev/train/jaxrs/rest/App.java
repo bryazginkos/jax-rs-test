@@ -23,6 +23,7 @@ public class App extends ResourceConfig {
         register(jsonProvider);
 
         register(MultiPartFeature.class);
-        register(MainResource.class);
+        register(ContactResourceImpl.class);
+        register(ImageResourceImpl.class);
     }
 }
