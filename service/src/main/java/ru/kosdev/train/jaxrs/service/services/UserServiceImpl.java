@@ -18,6 +18,7 @@ import java.util.List;
  * Created by Константин on 07.05.2016.
  */
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -33,7 +34,6 @@ public class UserServiceImpl implements UserService {
     private GroupRepository groupRepository;
 
     @Override
-    @Transactional
     public void updateContact(final ContactDto contactDto) {
         final Contact contact = converterFromDto.apply(contactDto);
         if (contact.getGroupList() != null) {
@@ -43,14 +43,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public void deleteContact(final Integer contactId) {
         contactRepository.delete(contactId);
     }
 
 
     @Override
-    @Transactional
     // TODO: 5/10/2016  pages
     public List<ContactDto> showContacts(final Integer start, final Integer maxNumber) {
         final Iterable<Contact> contacts = contactRepository.findAll();
