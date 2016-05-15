@@ -4,13 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by kos on 07.05.16.
  */
 @Embeddable
-public class AdditionalInfo {
+public class AdditionalInfo implements Serializable {
 
     @Getter @Setter
     private Date dateValue;

@@ -7,13 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Created by kos on 07.05.16.
  */
 @Entity
 @Table(name = "USER_GROUP")
-public class Group {
+public class Group implements Serializable {
 
     @Id
     @GeneratedValue

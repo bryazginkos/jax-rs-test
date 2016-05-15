@@ -4,13 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by kos on 07.05.16.
  */
 @Entity
-public class Contact {
+public class Contact implements Serializable {
     @Id
     @GeneratedValue
     @Getter @Setter
