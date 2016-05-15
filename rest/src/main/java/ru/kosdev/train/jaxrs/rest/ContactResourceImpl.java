@@ -20,9 +20,12 @@ public class ContactResourceImpl implements ContactResource {
 
     @Override
     public Response save(final ContactDto contactDto) throws ServiceException {
-        userService.updateContact(contactDto);
+        ContactDto saved = userService.updateContact(contactDto);
         final boolean isNew = contactDto.getId() == null;
-        return Response.status(isNew ? Response.Status.CREATED : Response.Status.ACCEPTED).build();
+        return Response
+                .status(isNew ? Response.Status.CREATED : Response.Status.ACCEPTED)
+                .entity(saved)
+                .build();
     }
 
     @Override

@@ -35,12 +35,13 @@ public class UserServiceImpl implements UserService {
     private GroupRepository groupRepository;
 
     @Override
-    public void updateContact(final ContactDto contactDto) {
+    public ContactDto updateContact(final ContactDto contactDto) {
         final Contact contact = converterFromDto.apply(contactDto);
         if (contact.getGroupList() != null) {
             groupRepository.save(contact.getGroupList());
         }
-        contactRepository.save(contact);
+        Contact saved = contactRepository.save(contact);
+        return converterToDto.apply(saved);
     }
 
     @Override

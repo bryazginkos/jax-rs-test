@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface UserService {
 
-    void updateContact(ContactDto contactDto);
+    ContactDto updateContact(ContactDto contactDto);
 
     void deleteContact(Integer contactId);
 
