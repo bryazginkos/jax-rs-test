@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
         if (contact.getGroupList() != null) {
             groupRepository.save(contact.getGroupList());
         }
-        Contact saved = contactRepository.save(contact);
+        final Contact saved = contactRepository.save(contact);
         return converterToDto.apply(saved);
     }
 

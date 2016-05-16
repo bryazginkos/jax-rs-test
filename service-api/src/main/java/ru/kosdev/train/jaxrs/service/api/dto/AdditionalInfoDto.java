@@ -1,7 +1,5 @@
 package ru.kosdev.train.jaxrs.service.api.dto;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.Max;
@@ -12,18 +10,55 @@ import java.time.LocalDate;
  */
 public class AdditionalInfoDto {
 
-    @Getter @Setter
     private LocalDate dateValue;
 
-    @Getter @Setter
     private String urlValue;
 
-    @Getter @Setter
     private String textValue;
 
-    @Getter @Setter @Max(value = 100, message = "The int is bigger than 100")
+    @Max(value = 100, message = "The int is bigger than 100")
     private Integer intValue;
 
-    @Getter @Setter @Email(message = "email is invalid")
+    @Email(message = "email is invalid")
     private String emailValue;
+
+    public LocalDate getDateValue() {
+        return dateValue;
+    }
+
+    public void setDateValue(final LocalDate dateValue) {
+        this.dateValue = dateValue;
+    }
+
+    public String getUrlValue() {
+        return urlValue;
+    }
+
+    public void setUrlValue(final String urlValue) {
+        this.urlValue = urlValue;
+    }
+
+    public String getTextValue() {
+        return textValue;
+    }
+
+    public void setTextValue(final String textValue) {
+        this.textValue = textValue;
+    }
+
+    public Integer getIntValue() {
+        return intValue;
+    }
+
+    public void setIntValue(final Integer intValue) {
+        this.intValue = intValue;
+    }
+
+    public String getEmailValue() {
+        return emailValue;
+    }
+
+    public void setEmailValue(final String emailValue) {
+        this.emailValue = emailValue;
+    }
 }

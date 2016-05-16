@@ -24,7 +24,6 @@
         <spring.version>4.2.6.RELEASE</spring.version>
         <commons.logging.version>1.2</commons.logging.version>
         <aspectj.version>1.8.9</aspectj.version>
-        <lombok.version>1.16.8</lombok.version>
         <spring.data.version>1.10.1.RELEASE</spring.data.version>
         <hibernate.version>4.3.11.Final</hibernate.version>
         <h2.database.version>1.4.191</h2.database.version>
@@ -169,13 +168,13 @@
                         <configuration>
                             <signature>
                                 <groupId>org.codehaus.mojo.signature</groupId>
-                                <artifactId>java17</artifactId>
+                                <artifactId>java18</artifactId>
                                 <version>1.0</version>
                             </signature>
                         </configuration>
                         <executions>
                             <execution>
-                                <id>check-java16-sun</id>
+                                <id>check-java18-sun</id>
                                 <phase>test</phase>
                                 <goals>
                                     <goal>check</goal>

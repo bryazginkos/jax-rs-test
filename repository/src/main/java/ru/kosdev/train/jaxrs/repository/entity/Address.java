@@ -1,8 +1,5 @@
 package ru.kosdev.train.jaxrs.repository.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
@@ -12,6 +9,13 @@ import java.io.Serializable;
 @Embeddable
 public class Address implements Serializable {
 
-    @Getter @Setter
     private String value;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(final String value) {
+        this.value = value;
+    }
 }

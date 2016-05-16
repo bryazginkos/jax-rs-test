@@ -1,8 +1,5 @@
 package ru.kosdev.train.jaxrs.repository.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,9 +15,23 @@ public class Group implements Serializable {
 
     @Id
     @GeneratedValue
-    @Getter @Setter
     private Integer id;
 
-    @Getter @Setter
     private String name;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(final Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(final String name) {
+        this.name = name;
+    }
 }

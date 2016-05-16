@@ -1,7 +1,5 @@
 package ru.kosdev.train.jaxrs.service.api.dto;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
@@ -9,8 +7,14 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 public class AddressDto {
 
-    @Getter
-    @Setter
     @NotBlank(message = "address is blank")
     private String value;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(final String value) {
+        this.value = value;
+    }
 }

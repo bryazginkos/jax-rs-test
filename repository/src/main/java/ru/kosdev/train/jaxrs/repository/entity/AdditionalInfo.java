@@ -1,8 +1,5 @@
 package ru.kosdev.train.jaxrs.repository.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -13,18 +10,53 @@ import java.time.LocalDate;
 @Embeddable
 public class AdditionalInfo implements Serializable {
 
-    @Getter @Setter
     private LocalDate dateValue;
 
-    @Getter @Setter
     private String urlValue;
 
-    @Getter @Setter
     private String textValue;
 
-    @Getter @Setter
     private Integer intValue;
 
-    @Getter @Setter
     private String emailValue;
+
+    public LocalDate getDateValue() {
+        return dateValue;
+    }
+
+    public void setDateValue(final LocalDate dateValue) {
+        this.dateValue = dateValue;
+    }
+
+    public String getUrlValue() {
+        return urlValue;
+    }
+
+    public void setUrlValue(final String urlValue) {
+        this.urlValue = urlValue;
+    }
+
+    public String getTextValue() {
+        return textValue;
+    }
+
+    public void setTextValue(final String textValue) {
+        this.textValue = textValue;
+    }
+
+    public Integer getIntValue() {
+        return intValue;
+    }
+
+    public void setIntValue(final Integer intValue) {
+        this.intValue = intValue;
+    }
+
+    public String getEmailValue() {
+        return emailValue;
+    }
+
+    public void setEmailValue(final String emailValue) {
+        this.emailValue = emailValue;
+    }
 }
