@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.Max;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Created by kos on 07.05.16.
@@ -13,7 +13,7 @@ import java.util.Date;
 public class AdditionalInfoDto {
 
     @Getter @Setter
-    private Date dateValue;
+    private LocalDate dateValue;
 
     @Getter @Setter
     private String urlValue;

@@ -5,7 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Created by kos on 07.05.16.
@@ -14,7 +14,7 @@ import java.util.Date;
 public class AdditionalInfo implements Serializable {
 
     @Getter @Setter
-    private Date dateValue;
+    private LocalDate dateValue;
 
     @Getter @Setter
     private String urlValue;
