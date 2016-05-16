@@ -6,10 +6,7 @@ import ru.kosdev.train.jaxrs.rest.exceptions.ServiceException;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.UUID;
@@ -35,9 +32,13 @@ public class FileManagerImpl implements FileManager {
     }
 
     @Override
-    public byte[] get(final String imageName) {
+    public byte[] get(final String imageName) throws FileNotFoundException {
+        File imageFile = new File(imagesPath + imageName);
+        if (!imageFile.exists()) {
+            throw new FileNotFoundException();
+        }
         try {
-            final BufferedImage image = ImageIO.read(new File(imagesPath + imageName));
+            final BufferedImage image = ImageIO.read(imageFile);
             final ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(image, "jpeg", baos);
             return baos.toByteArray();

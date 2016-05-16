@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import ru.kosdev.train.jaxrs.rest.filemanager.FileManager;
 
 import javax.ws.rs.core.Response;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 /**
@@ -29,7 +30,14 @@ public class ImageResourceImpl implements ImageResource {
 
     @Override
     public Response loadImage(final String imageName) {
-        final byte[] bytes = fileManager.get(imageName);
+        final byte[] bytes;
+        try {
+            bytes = fileManager.get(imageName);
+        } catch (FileNotFoundException e) {
+            return Response
+                    .status(Response.Status.NOT_FOUND)
+                    .build();
+        }
         return Response
                 .ok(bytes)
                 .build();
