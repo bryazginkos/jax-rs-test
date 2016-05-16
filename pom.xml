@@ -33,36 +33,207 @@
         <jetty.mvn.plugin.version>9.3.8.v20160314</jetty.mvn.plugin.version>
         <frontend.mvn.plugin.version>1.0</frontend.mvn.plugin.version>
 
-        <mvn.checkstyle.plugin>2.16</mvn.checkstyle.plugin>
+        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+        <java.source.version>1.8</java.source.version>
+        <java.target.version>1.8</java.target.version>
+
+        <codequality.version>1.0.0</codequality.version>
+
+        <checkstyle.level>warning</checkstyle.level>
+        <checkstyle.file.url>checkstyle-config.xml</checkstyle.file.url>
+        <findbugs.exclude.file.url>findbugs-exclude.xml</findbugs.exclude.file.url>
+
+        <maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
+        <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
+        <maven.findbugs.plugin.version>3.0.3</maven.findbugs.plugin.version>
+        <maven.pmd.plugin.version>3.6</maven.pmd.plugin.version>
+        <maven.animal.sniffer.plugin.version>1.15</maven.animal.sniffer.plugin.version>
+
+        <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
+        <maven.resources.plugin.version>2.7</maven.resources.plugin.version>
+        <maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
+
+        <maven.project.info.reports.plugin.version>2.9</maven.project.info.reports.plugin.version>
+        <maven.emma.plugin.version>1.0-alpha-3</maven.emma.plugin.version>
     </properties>
 
     <version>1.0-SNAPSHOT</version>
 
+    <profiles>
+        <profile>
+            <id>strict</id>
+
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>noveo</id>
+                    <name>noveo</name>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </snapshots>
+                    <url>http://nexus.noveogroup.com/content/repositories/releases</url>
+                    <layout>default</layout>
+                </pluginRepository>
+            </pluginRepositories>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <version>${maven.checkstyle.plugin.version}</version>
+                        <configuration>
+                            <enableRulesSummary>false</enableRulesSummary>
+                            <configLocation>${checkstyle.file.url}</configLocation>
+                            <consoleOutput>false</consoleOutput>
+                            <logViolationsToConsole>true</logViolationsToConsole>
+                            <violationSeverity>${checkstyle.level}</violationSeverity>
+                            <encoding>${encoding}</encoding>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.noveogroup.maven</groupId>
+                                <artifactId>codequality</artifactId>
+                                <version>${codequality.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>findbugs-maven-plugin</artifactId>
+                        <version>${maven.findbugs.plugin.version}</version>
+                        <configuration>
+                            <failOnError>true</failOnError>
+                            <excludeFilterFile>${findbugs.exclude.file.url}</excludeFilterFile>
+                            <findbugsXmlOutput>true</findbugsXmlOutput>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.noveogroup.maven</groupId>
+                                <artifactId>codequality</artifactId>
+                                <version>${codequality.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-pmd-plugin</artifactId>
+                        <version>${maven.pmd.plugin.version}</version>
+                        <configuration>
+                            <failOnViolation>true</failOnViolation>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.noveogroup.maven</groupId>
+                                <artifactId>codequality</artifactId>
+                                <version>${codequality.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>animal-sniffer-maven-plugin</artifactId>
+                        <version>${maven.animal.sniffer.plugin.version}</version>
+                        <configuration>
+                            <signature>
+                                <groupId>org.codehaus.mojo.signature</groupId>
+                                <artifactId>java17</artifactId>
+                                <version>1.0</version>
+                            </signature>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>check-java16-sun</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven.resources.plugin.version}</version>
+                    <configuration>
+                        <encoding>${encoding}</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven.javadoc.plugin.version}</version>
+                    <configuration>
+                        <encoding>${encoding}</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <encoding>${encoding}</encoding>
+                        <source>${java.source.version}</source>
+                        <target>${java.target.version}</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven.surefire.plugin.version}</version>
+                    <configuration>
+                        <parallel>methods</parallel>
+                        <threadCount>10</threadCount>
+                        <reportFormat>plain</reportFormat>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
-                <configuration>
-                    <source>${project.build.source}</source>
-                    <target>${project.build.target}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${mvn.checkstyle.plugin}</version>
-                <configuration>
-                    <configLocation>checkstyle-config.xml</configLocation>
-                    <consoleOutput>true</consoleOutput>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals><goal>check</goal></goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
