@@ -33,7 +33,7 @@ public class FileManagerImpl implements FileManager {
 
     @Override
     public byte[] get(final String imageName) throws FileNotFoundException {
-        File imageFile = new File(imagesPath + imageName);
+        final File imageFile = new File(imagesPath + imageName);
         if (!imageFile.exists()) {
             throw new FileNotFoundException();
         }
