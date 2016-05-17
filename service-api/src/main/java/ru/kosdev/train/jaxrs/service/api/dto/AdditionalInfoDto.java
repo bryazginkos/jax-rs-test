@@ -3,14 +3,14 @@ package ru.kosdev.train.jaxrs.service.api.dto;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.Max;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * Created by kos on 07.05.16.
  */
 public class AdditionalInfoDto {
 
-    private LocalDate dateValue;
+    private Date dateValue;
 
     private String urlValue;
 
@@ -22,12 +22,19 @@ public class AdditionalInfoDto {
     @Email(message = "email is invalid")
     private String emailValue;
 
-    public LocalDate getDateValue() {
-        return dateValue;
+    public Date getDateValue() {
+        if (dateValue == null) {
+            return null;
+        }
+        return new Date(dateValue.getTime());
     }
 
-    public void setDateValue(final LocalDate dateValue) {
-        this.dateValue = dateValue;
+    public void setDateValue(final Date dateValue) {
+        if (dateValue == null) {
+            this.dateValue = null;
+        } else {
+            this.dateValue = new Date(dateValue.getTime());
+        }
     }
 
     public String getUrlValue() {

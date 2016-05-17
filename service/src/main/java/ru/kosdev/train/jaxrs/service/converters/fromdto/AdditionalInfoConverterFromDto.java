@@ -4,6 +4,11 @@ import org.springframework.stereotype.Service;
 import ru.kosdev.train.jaxrs.service.api.dto.AdditionalInfoDto;
 import ru.kosdev.train.jaxrs.repository.entity.AdditionalInfo;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.function.Function;
 
 /**
@@ -21,7 +26,12 @@ public class AdditionalInfoConverterFromDto implements Function<AdditionalInfoDt
         additionalInfo.setTextValue(additionalInfoDto.getTextValue());
         additionalInfo.setIntValue(additionalInfoDto.getIntValue());
         additionalInfo.setEmailValue(additionalInfoDto.getEmailValue());
-        additionalInfo.setDateValue(additionalInfoDto.getDateValue());
+        final Date dateValue = additionalInfoDto.getDateValue();
+        if (dateValue != null) {
+            final Instant instant = Instant.ofEpochMilli(dateValue.getTime());
+            final LocalDate localDate = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate();
+            additionalInfo.setDateValue(localDate);
+        }
         return additionalInfo;
     }
 }
