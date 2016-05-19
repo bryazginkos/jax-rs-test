@@ -34,7 +34,7 @@ public interface ContactResource {
      */
     @DELETE
     @Path("contact/{id}")
-    Response deleteContact(@PathParam(value = "id") Integer contactId);
+    Response deleteContact(@PathParam("id") Integer contactId);
 
     /**
      * Show contacts.
