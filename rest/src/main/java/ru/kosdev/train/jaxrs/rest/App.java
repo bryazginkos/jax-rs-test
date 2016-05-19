@@ -1,6 +1,6 @@
 package ru.kosdev.train.jaxrs.rest;
 
-import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
+import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
@@ -18,12 +18,11 @@ public class App extends ResourceConfig {
         property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, true);
         register(ServiceExceptionMapper.class);
 
-        final JacksonJaxbJsonProvider jsonProvider = new JacksonJaxbJsonProvider();
-        jsonProvider.setMapper(new CustomObjectMapper());
-        register(jsonProvider);
+        register(JacksonObjectMapperProvider.class);
 
         register(MultiPartFeature.class);
         register(ContactResourceImpl.class);
         register(ImageResourceImpl.class);
+        register(JacksonFeature.class);
     }
 }
