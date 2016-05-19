@@ -5,10 +5,9 @@ import org.springframework.stereotype.Service;
 import ru.kosdev.train.jaxrs.common.exception.ServiceException;
 import ru.kosdev.train.jaxrs.service.api.contract.FileManager;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
@@ -34,15 +33,14 @@ public class FileManagerImpl implements FileManager {
 
     @Override
     public byte[] get(final String imageName) throws FileNotFoundException {
-        final File imageFile = new File(imagesPath + imageName);
-        if (!imageFile.exists()) {
+        Path path = Paths.get(imagesPath + imageName);
+
+        if (!Files.exists(path)) {
             throw new FileNotFoundException();
         }
+
         try {
-            final BufferedImage image = ImageIO.read(imageFile);
-            final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(image, "jpeg", baos);
-            return baos.toByteArray();
+            return Files.readAllBytes(path);
         } catch (IOException e) {
             throw new ServiceException(e.getMessage());
         }
