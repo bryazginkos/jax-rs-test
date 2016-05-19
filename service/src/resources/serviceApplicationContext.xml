@@ -17,6 +17,6 @@
     <bean id="fileManager" class="ru.kosdev.train.jaxrs.service.services.FileManagerImpl"/>
     <bean id="exceptionAspect" class="ru.kosdev.train.jaxrs.service.aspects.ServiceAspect"/>
 
-    <bean id="repositoryConfig" class="ru.kosdev.train.jaxrs.repository.config.SpringConfig"/>
+    <import resource="repositoryApplicationContext.xml"/>
 
 </beans>
