@@ -13,7 +13,7 @@ import ru.kosdev.train.jaxrs.common.exception.ServiceException;
 @Component
 public class ServiceAspect {
 
-    @Around("within(ru.kosdev.train.jaxrs.service.api.contract.UserService+)")
+    @Around("within(ru.kosdev.train.jaxrs.service.api.contract.ContactService+)")
     public Object wrapExceptions(final ProceedingJoinPoint joinPoint) {
         try {
             return joinPoint.proceed();

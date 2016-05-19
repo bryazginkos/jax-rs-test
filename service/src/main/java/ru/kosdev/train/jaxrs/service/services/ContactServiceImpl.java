@@ -5,7 +5,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kosdev.train.jaxrs.repository.dao.GroupRepository;
-import ru.kosdev.train.jaxrs.service.api.contract.UserService;
+import ru.kosdev.train.jaxrs.service.api.contract.ContactService;
 import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 import ru.kosdev.train.jaxrs.repository.dao.ContactRepository;
 import ru.kosdev.train.jaxrs.repository.entity.Contact;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
+public class ContactServiceImpl implements ContactService {
 
     @Autowired
     private ContactConverterFromDto converterFromDto;

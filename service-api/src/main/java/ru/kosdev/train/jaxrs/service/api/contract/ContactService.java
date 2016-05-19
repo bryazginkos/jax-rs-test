@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Константин on 07.05.2016.
  */
-public interface UserService {
+public interface ContactService {
 
     ContactDto updateContact(ContactDto contactDto);
 

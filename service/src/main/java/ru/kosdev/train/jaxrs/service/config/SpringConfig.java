@@ -5,10 +5,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import ru.kosdev.train.jaxrs.service.api.contract.FileManager;
-import ru.kosdev.train.jaxrs.service.api.contract.UserService;
+import ru.kosdev.train.jaxrs.service.api.contract.ContactService;
 import ru.kosdev.train.jaxrs.service.aspects.ServiceAspect;
 import ru.kosdev.train.jaxrs.service.services.FileManagerImpl;
-import ru.kosdev.train.jaxrs.service.services.UserServiceImpl;
+import ru.kosdev.train.jaxrs.service.services.ContactServiceImpl;
 
 /**
  * Created by Константин on 07.05.2016.
@@ -19,8 +19,8 @@ import ru.kosdev.train.jaxrs.service.services.UserServiceImpl;
 public class SpringConfig {
 
     @Bean
-    public UserService userService() {
-        return new UserServiceImpl();
+    public ContactService contactService() {
+        return new ContactServiceImpl();
     }
 
     @Bean
