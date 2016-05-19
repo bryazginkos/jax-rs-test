@@ -3,19 +3,20 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
   http://www.springframework.org/schema/beans/spring-beans.xsd
   http://www.springframework.org/schema/context
   http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
 >
-    <context:component-scan base-package="ru.kosdev.train.jaxrs.rest" />
+    <context:component-scan base-package="ru.kosdev.train.jaxrs.service.converters" />
 
-    <import resource="serviceApplicationContext.xml"/>
+    <aop:aspectj-autoproxy />
 
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location">
-            <value>classpath:application.properties</value>
-        </property>
-    </bean>
+    <bean id="contactService" class="ru.kosdev.train.jaxrs.service.services.ContactServiceImpl"/>
+    <bean id="fileManager" class="ru.kosdev.train.jaxrs.service.services.FileManagerImpl"/>
+    <bean id="exceptionAspect" class="ru.kosdev.train.jaxrs.service.aspects.ServiceAspect"/>
+
+    <bean id="repositoryConfig" class="ru.kosdev.train.jaxrs.repository.config.SpringConfig"/>
 
 </beans>
