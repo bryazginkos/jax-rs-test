@@ -40,7 +40,7 @@ public class LocalDateSerializationModule extends SimpleModule {
     /**
      * LocalDateDeserializer.
      */
-     static class LocalDateDeserializer extends JsonDeserializer<LocalDate> {
+    static class LocalDateDeserializer extends JsonDeserializer<LocalDate> {
         @Override
         public LocalDate deserialize(final JsonParser jsonParser,
                                      final DeserializationContext deserializationContext)
