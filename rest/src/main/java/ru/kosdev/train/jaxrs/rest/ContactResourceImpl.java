@@ -2,7 +2,6 @@ package ru.kosdev.train.jaxrs.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import ru.kosdev.train.jaxrs.rest.exceptions.ServiceException;
 import ru.kosdev.train.jaxrs.service.api.contract.UserService;
 import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 
@@ -19,7 +18,7 @@ public class ContactResourceImpl implements ContactResource {
     private UserService userService;
 
     @Override
-    public Response save(final ContactDto contactDto) throws ServiceException {
+    public Response save(final ContactDto contactDto) {
         final ContactDto saved = userService.updateContact(contactDto);
         final boolean isNew = contactDto.getId() == null;
         return Response

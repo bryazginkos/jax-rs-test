@@ -1,6 +1,5 @@
 package ru.kosdev.train.jaxrs.rest;
 
-import ru.kosdev.train.jaxrs.rest.exceptions.ServiceException;
 import ru.kosdev.train.jaxrs.service.api.dto.ContactDto;
 
 import javax.validation.Valid;
@@ -20,12 +19,11 @@ public interface ContactResource {
      * All groups in contact will be modified!
      * @param contactDto
      * @return
-     * @throws ServiceException
      */
     @POST
     @Path("contact")
     @Consumes(MediaType.APPLICATION_JSON)
-    Response save(@Valid ContactDto contactDto) throws ServiceException;
+    Response save(@Valid ContactDto contactDto);
 
     /**
      * Deletes contact.

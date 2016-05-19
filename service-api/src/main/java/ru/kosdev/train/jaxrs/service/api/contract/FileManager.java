@@ -1,4 +1,4 @@
-package ru.kosdev.train.jaxrs.rest.filemanager;
+package ru.kosdev.train.jaxrs.service.api.contract;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;

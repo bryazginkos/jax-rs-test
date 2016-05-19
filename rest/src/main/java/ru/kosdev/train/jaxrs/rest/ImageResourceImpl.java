@@ -3,7 +3,7 @@ package ru.kosdev.train.jaxrs.rest;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import ru.kosdev.train.jaxrs.rest.filemanager.FileManager;
+import ru.kosdev.train.jaxrs.service.api.contract.FileManager;
 
 import javax.ws.rs.core.Response;
 import java.io.FileNotFoundException;

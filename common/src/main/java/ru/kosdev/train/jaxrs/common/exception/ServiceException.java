@@ -1,4 +1,4 @@
-package ru.kosdev.train.jaxrs.rest.exceptions;
+package ru.kosdev.train.jaxrs.common.exception;
 
 /**
  * Created by kbryazgin on 5/11/2016.
