@@ -20,10 +20,10 @@ public class Contact implements Serializable {
 
     private String imageName;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<Address> addressList;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<AdditionalInfo> additionalInfoList;
 
     public Integer getId() {
