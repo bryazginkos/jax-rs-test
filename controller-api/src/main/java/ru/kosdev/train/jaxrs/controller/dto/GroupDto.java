@@ -11,8 +11,8 @@ public class GroupDto {
 
     private Integer id;
 
-    @NotBlank(message = "group name is blank")
-    @Size(max = 20, message = "The size of group name is more than 20")
+    @NotBlank(message = "{group.name.blank}")
+    @Size(max = 20, message = "{group.name.long}")
     private String name;
 
     public Integer getId() {

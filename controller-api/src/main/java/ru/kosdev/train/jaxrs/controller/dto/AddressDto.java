@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
  */
 public class AddressDto {
 
-    @NotBlank(message = "address is blank")
+    @NotBlank(message = "{contact.address.long}")
     @Size(max = 20)
     private String value;
 

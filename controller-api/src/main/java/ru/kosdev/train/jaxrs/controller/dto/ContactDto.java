@@ -13,15 +13,15 @@ public class ContactDto {
 
     private Integer id;
 
-    @NotBlank(message = "contact name is blank")
-    @Size(max = 20, message = "The size of name is more than 20")
+    @NotBlank(message = "{contact.name.blank}")
+    @Size(max = 20, message = "{contact.name.long}")
     private String name;
 
     @Valid
     private List<GroupDto> groupList;
 
-    @NotBlank(message = "image name is blank")
-    @Size(max = 100, message = "The size of image name is more than 100")
+    @NotBlank(message = "{contact.image.name.blank}")
+    @Size(max = 100, message = "{contact.image.name.long}")
     private String imageName;
 
     @Valid

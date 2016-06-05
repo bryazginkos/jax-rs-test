@@ -13,17 +13,17 @@ public class AdditionalInfoDto {
 
     private LocalDate dateValue;
 
-    @Size(max = 100, message = "The size of url is more than 100")
+    @Size(max = 100, message = "{contact.additional.url.lon}")
     private String urlValue;
 
-    @Size(max = 20, message = "The size of text is more than 20")
+    @Size(max = 20, message = "{contact.additional.text.long}")
     private String textValue;
 
-    @Max(value = 100, message = "The int is bigger than 100")
+    @Max(value = 100, message = "{contact.additional.int.big}")
     private Integer intValue;
 
-    @Email(message = "email is invalid")
-    @Size(max = 20, message = "The size of email is more than 20")
+    @Email(message = "{contact.additional.email.invalid}")
+    @Size(max = 20, message = "{contact.additional.email.long}")
     private String emailValue;
 
     public LocalDate getDateValue() {
