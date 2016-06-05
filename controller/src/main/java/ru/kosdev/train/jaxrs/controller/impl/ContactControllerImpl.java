@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kosdev.train.jaxrs.controller.api.ContactController;
 import ru.kosdev.train.jaxrs.controller.api.IncorrectDataException;
+import ru.kosdev.train.jaxrs.controller.api.NotFoundException;
 import ru.kosdev.train.jaxrs.controller.converters.fromdto.ContactConverterFromDto;
 import ru.kosdev.train.jaxrs.controller.converters.todto.ContactConverterToDto;
 import ru.kosdev.train.jaxrs.controller.converters.todto.PageConverterToDto;
@@ -46,7 +47,11 @@ public class ContactControllerImpl implements ContactController {
     @Nonnull
     @Override
     public ContactDto createContact(@Nonnull ContactDto contactDto) {
-        contactService.checkNameIsFree(contactDto.getName());
+        final boolean validName = contactService.checkNameIsFree(contactDto.getName());
+        if (!validName) {
+            throw new IncorrectDataException("The name " + contactDto.getName()
+            + " is already used");
+        }
         checkGroupsExist(contactDto.getGroupList());
         final Contact contact = converterFromDto.apply(contactDto);
         final Contact savedContact = contactService.createContact(contact);
@@ -57,14 +62,16 @@ public class ContactControllerImpl implements ContactController {
     @Override
     public ContactDto updateContract(@Nonnull Integer id, @Nonnull ContactDto contactDto) {
         checkContactExists(id);
-        contactService.checkContactNameHasOnly(id, contactDto.getName());
+        final boolean validName = contactService.checkContactNameHasOnly(id, contactDto.getName());
+        if (!validName) {
+            throw new IncorrectDataException("The name " + contactDto.getName()
+                    + " is already used");
+        }
         checkGroupsExist(contactDto.getGroupList());
         final Contact contact = converterFromDto.apply(contactDto);
         final Contact updatedContract = contactService.updateContact(id, contact);
         return toDtoConverter.apply(updatedContract);
     }
-
-
 
     @Override
     public void deleteContact(@Nonnull Integer contactId) {
@@ -102,7 +109,7 @@ public class ContactControllerImpl implements ContactController {
 
     private void checkContactExists(@Nonnull Integer id) {
         if (!contactService.exists(id)) {
-            throw new IncorrectDataException("The contact with id " + id + " doesn't exist");
+            throw new NotFoundException("The contact with id " + id + " doesn't exist");
         }
     }
 

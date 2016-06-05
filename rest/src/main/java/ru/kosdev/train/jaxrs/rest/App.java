@@ -7,7 +7,9 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
+import ru.kosdev.train.jaxrs.rest.exceptions.BusinessExceptionMapper;
 import ru.kosdev.train.jaxrs.rest.exceptions.IncorrectDataExceptionMapper;
+import ru.kosdev.train.jaxrs.rest.exceptions.NotFoundExceptionMapper;
 import ru.kosdev.train.jaxrs.rest.impl.ContactResourceImpl;
 import ru.kosdev.train.jaxrs.rest.impl.GroupResourceImpl;
 import ru.kosdev.train.jaxrs.rest.impl.ImageResourceImpl;
@@ -22,7 +24,10 @@ public class App extends ResourceConfig {
 
     public App() {
         property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, true);
+
         register(IncorrectDataExceptionMapper.class);
+        register(NotFoundExceptionMapper.class);
+        register(BusinessExceptionMapper.class);
 
         register(JacksonObjectMapperProvider.class);
         register(MultiPartFeature.class);

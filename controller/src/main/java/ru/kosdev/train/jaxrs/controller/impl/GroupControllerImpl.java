@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kosdev.train.jaxrs.controller.api.GroupController;
 import ru.kosdev.train.jaxrs.controller.api.IncorrectDataException;
+import ru.kosdev.train.jaxrs.controller.api.NotFoundException;
 import ru.kosdev.train.jaxrs.controller.converters.fromdto.GroupConverterFromDto;
 import ru.kosdev.train.jaxrs.controller.converters.todto.GroupConverterToDto;
 import ru.kosdev.train.jaxrs.controller.converters.todto.PageConverterToDto;
@@ -84,7 +85,7 @@ public class GroupControllerImpl implements GroupController {
 
     private void checkGroupExists(@Nonnull Integer groupId) {
         if (!groupService.exists(groupId)) {
-            throw new IncorrectDataException("Group with id " + groupId + " doesn't exist");
+            throw new NotFoundException("Group with id " + groupId + " doesn't exist");
         }
     }
 }
