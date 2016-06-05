@@ -3,6 +3,7 @@ package ru.kosdev.train.jaxrs.controller.dto;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 /**
@@ -12,14 +13,17 @@ public class AdditionalInfoDto {
 
     private LocalDate dateValue;
 
+    @Size(max = 100, message = "The size of url is more than 100")
     private String urlValue;
 
+    @Size(max = 20, message = "The size of text is more than 20")
     private String textValue;
 
     @Max(value = 100, message = "The int is bigger than 100")
     private Integer intValue;
 
     @Email(message = "email is invalid")
+    @Size(max = 20, message = "The size of email is more than 20")
     private String emailValue;
 
     public LocalDate getDateValue() {

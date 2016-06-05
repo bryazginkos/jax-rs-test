@@ -3,6 +3,7 @@ package ru.kosdev.train.jaxrs.controller.dto;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
@@ -13,12 +14,14 @@ public class ContactDto {
     private Integer id;
 
     @NotBlank(message = "contact name is blank")
+    @Size(max = 20, message = "The size of name is more than 20")
     private String name;
 
     @Valid
     private List<GroupDto> groupList;
 
     @NotBlank(message = "image name is blank")
+    @Size(max = 100, message = "The size of image name is more than 100")
     private String imageName;
 
     @Valid
