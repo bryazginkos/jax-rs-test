@@ -1,6 +1,7 @@
 package ru.kosdev.train.jaxrs.controller.dto;
 
 import org.hibernate.validator.constraints.Email;
+import ru.kosdev.train.jaxrs.controller.validators.NoOlderThan;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
  */
 public class AdditionalInfoDto {
 
+    @NoOlderThan(years = 1, message = "{contact.additional.date.old}")
     private LocalDate dateValue;
 
     @Size(max = 100, message = "{contact.additional.url.lon}")
