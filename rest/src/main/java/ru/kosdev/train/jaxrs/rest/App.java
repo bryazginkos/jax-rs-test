@@ -1,10 +1,16 @@
 package ru.kosdev.train.jaxrs.rest;
 
+import io.swagger.jaxrs.config.BeanConfig;
+import io.swagger.jaxrs.listing.ApiListingResource;
+import io.swagger.jaxrs.listing.SwaggerSerializers;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
-import ru.kosdev.train.jaxrs.rest.exceptions.ServiceExceptionMapper;
+import ru.kosdev.train.jaxrs.rest.exceptions.IncorrectDataExceptionMapper;
+import ru.kosdev.train.jaxrs.rest.impl.ContactResourceImpl;
+import ru.kosdev.train.jaxrs.rest.impl.GroupResourceImpl;
+import ru.kosdev.train.jaxrs.rest.impl.ImageResourceImpl;
 
 import javax.ws.rs.ApplicationPath;
 
@@ -16,13 +22,25 @@ public class App extends ResourceConfig {
 
     public App() {
         property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, true);
-        register(ServiceExceptionMapper.class);
+        register(IncorrectDataExceptionMapper.class);
 
         register(JacksonObjectMapperProvider.class);
-
         register(MultiPartFeature.class);
+        register(JacksonFeature.class);
+
         register(ContactResourceImpl.class);
         register(ImageResourceImpl.class);
-        register(JacksonFeature.class);
+        register(GroupResourceImpl.class);
+
+        register(ApiListingResource.class);
+        register(SwaggerSerializers.class);
+
+        BeanConfig beanConfig = new BeanConfig();
+        beanConfig.setVersion("1.0.0");
+        beanConfig.setSchemes(new String[]{"http"});
+        beanConfig.setBasePath("/api");
+        beanConfig.setResourcePackage("ru.kosdev.train.jaxrs.rest");
+        beanConfig.setScan(true);
+        beanConfig.setPrettyPrint(true);
     }
 }

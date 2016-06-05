@@ -9,7 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jaxrs-common</artifactId>
+    <artifactId>jaxrs-controller-api</artifactId>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-bean-validation</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

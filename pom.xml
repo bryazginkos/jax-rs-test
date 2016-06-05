@@ -13,8 +13,9 @@
         <module>service-api</module>
         <module>service</module>
         <module>repository</module>
-        <module>client</module>
         <module>common</module>
+        <module>controller-api</module>
+        <module>controller</module>
     </modules>
 
     <properties>
@@ -39,6 +40,8 @@
         <java.source.version>1.8</java.source.version>
         <java.target.version>1.8</java.target.version>
 
+        <swagger.version>1.5.0</swagger.version>
+
         <codequality.version>1.0.0</codequality.version>
 
         <checkstyle.level>warning</checkstyle.level>
@@ -47,7 +50,7 @@
 
         <maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
         <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
-        <maven.findbugs.plugin.version>3.0.3</maven.findbugs.plugin.version>
+        <maven.findbugs.plugin.version>3.0.1</maven.findbugs.plugin.version>
         <maven.pmd.plugin.version>3.6</maven.pmd.plugin.version>
         <maven.animal.sniffer.plugin.version>1.15</maven.animal.sniffer.plugin.version>
 
@@ -332,6 +335,27 @@
                 <scope>runtime</scope>
             </dependency>
 
+            <!--Findbugs-->
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${maven.findbugs.plugin.version}</version>
+            </dependency>
+
+            <!-- Swagger -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-jersey2-jaxrs</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+        </dependency>
+    </dependencies>
 </project>

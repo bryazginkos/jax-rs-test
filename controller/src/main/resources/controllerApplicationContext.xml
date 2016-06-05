@@ -8,12 +8,8 @@
   http://www.springframework.org/schema/context
   http://www.springframework.org/schema/context/spring-context.xsd"
 >
-    <context:component-scan base-package="ru.kosdev.train.jaxrs.rest" />
 
-    <import resource="classpath:controllerApplicationContext.xml"/>
-
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:application.properties"/>
-    </bean>
+    <import resource="classpath:serviceApplicationContext.xml"/>
+    <context:component-scan base-package="ru.kosdev.train.jaxrs.controller" />
 
 </beans>
