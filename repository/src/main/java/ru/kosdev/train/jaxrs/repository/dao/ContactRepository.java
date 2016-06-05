@@ -20,4 +20,7 @@ public interface ContactRepository extends CrudRepository<Contact, Integer> {
 
     @Nullable
     Contact findByName(@Nonnull String name);
+
+    @Nonnull
+    Page<Contact> findByGroupListId(@Nonnull Integer id, @Nonnull Pageable pageable);
 }

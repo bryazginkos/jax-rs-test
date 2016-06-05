@@ -7,6 +7,8 @@ import ru.kosdev.train.jaxrs.controller.dto.ContactDto;
 import ru.kosdev.train.jaxrs.controller.dto.PageDto;
 import ru.kosdev.train.jaxrs.rest.api.ContactResource;
 
+import javax.validation.constraints.NotNull;
+
 
 /**
  * Created by kbryazgin on 5/6/2016.
@@ -40,5 +42,10 @@ public class ContactResourceImpl implements ContactResource {
     @Override
     public PageDto<ContactDto> getContacts(Integer page, Integer size) {
         return contactController.getContacts(page, size);
+    }
+
+    @Override
+    public PageDto<ContactDto> getGroupContacts(Integer groupId, @NotNull(message = "page is null") Integer page, @NotNull(message = "size is null") Integer size) {
+        return contactController.getContactsByGroupId(groupId, page, size);
     }
 }

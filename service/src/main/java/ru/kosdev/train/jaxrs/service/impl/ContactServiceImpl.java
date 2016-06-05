@@ -40,6 +40,12 @@ public class ContactServiceImpl implements ContactService {
         return contactRepository.findAll(new PageRequest(page, pageSize));
     }
 
+    @Nonnull
+    @Override
+    public Page<Contact> getContactsByGroupId(@Nonnull Integer groupId, @Nonnull Integer page, @Nonnull Integer pageSize) {
+        return contactRepository.findByGroupListId(groupId, new PageRequest(page, pageSize));
+    }
+
     @Nullable
     @Override
     public Contact getContact(@Nonnull Integer contactId) {

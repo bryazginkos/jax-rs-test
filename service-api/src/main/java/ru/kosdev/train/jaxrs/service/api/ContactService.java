@@ -21,6 +21,9 @@ public interface ContactService {
     @Nonnull
     Page<Contact> getContacts(@Nonnull Integer page, @Nonnull Integer pageSize);
 
+    @Nonnull
+    Page<Contact> getContactsByGroupId(@Nonnull Integer groupId, @Nonnull Integer page, @Nonnull Integer pageSize);
+
     @Nullable
     Contact getContact(@Nonnull Integer contactId);
 

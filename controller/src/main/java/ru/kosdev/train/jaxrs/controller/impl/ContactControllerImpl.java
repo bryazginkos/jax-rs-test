@@ -86,6 +86,15 @@ public class ContactControllerImpl implements ContactController {
         return pageConverterToDto.convert(contactPage, toDtoConverter);
     }
 
+    @Override
+    public PageDto<ContactDto> getContactsByGroupId(@Nonnull Integer groupId, @Nonnull Integer page, @Nonnull Integer pageSize) {
+        if (!groupService.exists(groupId)) {
+            throw new NotFoundException("The group with id " + groupId + " is not found");
+        }
+        final Page<Contact> contactPage = contactService.getContactsByGroupId(groupId, page, pageSize);
+        return pageConverterToDto.convert(contactPage, toDtoConverter);
+    }
+
     @Nonnull
     @Override
     public ContactDto getContact(@Nonnull Integer id) {

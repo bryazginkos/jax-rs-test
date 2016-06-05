@@ -42,6 +42,13 @@ public interface ContactResource {
     @Path("contact/{id}")
     ContactDto getContact(@PathParam("id") Integer contactId);
 
+    @ApiOperation(value = "Get contacts of group")
+    @GET
+    @Path("group/{groupId}")
+    PageDto<ContactDto> getGroupContacts(@PathParam("groupId") Integer groupId,
+                                         @NotNull(message = "page is null") @QueryParam("page") Integer page,
+                                         @NotNull(message = "size is null") @QueryParam("size") Integer size);
+
     @ApiOperation(value = "Delete contact")
     @DELETE
     @Path("contact/{id}")
