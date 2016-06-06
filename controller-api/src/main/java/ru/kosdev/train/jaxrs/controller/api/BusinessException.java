@@ -5,7 +5,7 @@ package ru.kosdev.train.jaxrs.controller.api;
  */
 public class BusinessException extends RuntimeException {
 
-    public BusinessException(String message) {
+    public BusinessException(final String message) {
         super(message);
     }
 }

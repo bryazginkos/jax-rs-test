@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import ru.kosdev.train.jaxrs.controller.api.ImageController;
 import ru.kosdev.train.jaxrs.service.api.ImageService;
 
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 /**
@@ -17,12 +18,17 @@ public class ImageControllerImpl implements ImageController {
     private ImageService fileService;
 
     @Override
-    public String save(InputStream inputStream) {
-        return null;
+    public String save(final InputStream inputStream) {
+        return fileService.save(inputStream);
     }
 
     @Override
-    public byte[] get(String imageName) {
-        return new byte[0];
+    public byte[] get(final String imageName) {
+        try {
+            return fileService.get(imageName);
+        } catch (FileNotFoundException e) {
+            //todo
+            throw new RuntimeException();
+        }
     }
 }

@@ -5,7 +5,7 @@ package ru.kosdev.train.jaxrs.controller.api;
  */
 public class NotFoundException extends BusinessException {
 
-    public NotFoundException(String message) {
+    public NotFoundException(final String message) {
         super(message);
     }
 }

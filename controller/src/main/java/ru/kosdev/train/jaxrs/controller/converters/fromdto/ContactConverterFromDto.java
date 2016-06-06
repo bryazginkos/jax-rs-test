@@ -2,7 +2,6 @@ package ru.kosdev.train.jaxrs.controller.converters.fromdto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import ru.kosdev.train.jaxrs.controller.dto.ContactDto;
 import ru.kosdev.train.jaxrs.repository.entity.AdditionalInfo;
 import ru.kosdev.train.jaxrs.repository.entity.Address;

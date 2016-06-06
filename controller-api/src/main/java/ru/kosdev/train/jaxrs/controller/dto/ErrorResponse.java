@@ -10,7 +10,7 @@ public class ErrorResponse {
     public ErrorResponse() {
     }
 
-    public ErrorResponse(String message) {
+    public ErrorResponse(final String message) {
         this.message = message;
     }
 
@@ -18,7 +18,7 @@ public class ErrorResponse {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(final String message) {
         this.message = message;
     }
 }

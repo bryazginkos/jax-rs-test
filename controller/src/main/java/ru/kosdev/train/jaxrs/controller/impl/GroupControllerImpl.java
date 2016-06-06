@@ -38,7 +38,7 @@ public class GroupControllerImpl implements GroupController {
 
     @Override
     @Nonnull
-    public GroupDto createGroup(@Nonnull GroupDto groupDto) {
+    public GroupDto createGroup(@Nonnull final GroupDto groupDto) {
         final String name = groupDto.getName();
         final boolean validName = groupService.checkGroupNameIsFree(name);
         if (!validName) {
@@ -51,7 +51,7 @@ public class GroupControllerImpl implements GroupController {
 
     @Override
     @Nonnull
-    public GroupDto updateGroup(@Nonnull Integer id, @Nonnull GroupDto groupDto) {
+    public GroupDto updateGroup(@Nonnull final Integer id, @Nonnull final GroupDto groupDto) {
         checkGroupExists(id);
         final String name = groupDto.getName();
         final boolean validName = groupService.checkGroupNameHasOnly(id, name);
@@ -64,26 +64,26 @@ public class GroupControllerImpl implements GroupController {
     }
 
     @Override
-    public void deteteGroup(@Nonnull Integer groupId) {
+    public void deteteGroup(@Nonnull final Integer groupId) {
         checkGroupExists(groupId);
         groupService.deleteGroup(groupId);
     }
 
     @Override
-    public PageDto<GroupDto> getGroups(@Nonnull Integer page, @Nonnull Integer pageSize) {
+    public PageDto<GroupDto> getGroups(@Nonnull final Integer page, @Nonnull final Integer pageSize) {
         final Page<Group> groups = groupService.getGroups(page, pageSize);
         return pageConverterToDto.convert(groups, toDtoConverter);
     }
 
     @Override
     @Nonnull
-    public GroupDto getGroup(@Nonnull Integer groupId) {
+    public GroupDto getGroup(@Nonnull final Integer groupId) {
         checkGroupExists(groupId);
         final Group group = groupService.getGroup(groupId);
         return toDtoConverter.apply(group);
     }
 
-    private void checkGroupExists(@Nonnull Integer groupId) {
+    private void checkGroupExists(@Nonnull final Integer groupId) {
         if (!groupService.exists(groupId)) {
             throw new NotFoundException("Group with id " + groupId + " doesn't exist");
         }

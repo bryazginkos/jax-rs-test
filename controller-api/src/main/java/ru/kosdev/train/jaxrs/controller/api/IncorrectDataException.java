@@ -5,7 +5,7 @@ package ru.kosdev.train.jaxrs.controller.api;
  */
 public class IncorrectDataException extends BusinessException {
 
-    public IncorrectDataException(String message) {
+    public IncorrectDataException(final String message) {
         super(message);
     }
 }

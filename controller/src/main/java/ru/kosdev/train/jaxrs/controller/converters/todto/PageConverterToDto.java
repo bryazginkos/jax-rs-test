@@ -19,7 +19,7 @@ public class PageConverterToDto {
     @Nonnull
     public <DTO, ENTITY> PageDto<DTO> convert(@Nonnull final Page<ENTITY> page,
                                               @Nonnull final Function<ENTITY, DTO> function) {
-        PageDtoImpl<DTO> pageDto = new PageDtoImpl<>();
+        final PageDtoImpl<DTO> pageDto = new PageDtoImpl<>();
         pageDto.setHasNext(page.hasNext());
         pageDto.setHasPrevious(page.hasPrevious());
         pageDto.setPageNum(page.getNumber());

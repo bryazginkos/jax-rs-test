@@ -3,7 +3,8 @@ package ru.kosdev.train.jaxrs.controller.dto;
 import java.util.List;
 
 /**
- * Created by kos on 04.06.16.
+ *
+ * @param <T>
  */
 public interface PageDto<T> {
 

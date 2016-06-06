@@ -3,7 +3,8 @@ package ru.kosdev.train.jaxrs.controller.dto;
 import java.util.List;
 
 /**
- * Created by kos on 04.06.16.
+ *
+ * @param <T>
  */
 public class PageDtoImpl<T> implements PageDto<T> {
     private List<T> data;
@@ -21,7 +22,7 @@ public class PageDtoImpl<T> implements PageDto<T> {
         return data;
     }
 
-    public void setData(List<T> data) {
+    public void setData(final List<T> data) {
         this.data = data;
     }
 
@@ -30,7 +31,7 @@ public class PageDtoImpl<T> implements PageDto<T> {
         return pageNum;
     }
 
-    public void setPageNum(int pageNum) {
+    public void setPageNum(final int pageNum) {
         this.pageNum = pageNum;
     }
 
@@ -39,7 +40,7 @@ public class PageDtoImpl<T> implements PageDto<T> {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(final int total) {
         this.total = total;
     }
 
@@ -48,7 +49,7 @@ public class PageDtoImpl<T> implements PageDto<T> {
         return hasNext;
     }
 
-    public void setHasNext(boolean hasNext) {
+    public void setHasNext(final boolean hasNext) {
         this.hasNext = hasNext;
     }
 
@@ -57,7 +58,7 @@ public class PageDtoImpl<T> implements PageDto<T> {
         return hasPrevious;
     }
 
-    public void setHasPrevious(boolean hasPrevious) {
+    public void setHasPrevious(final boolean hasPrevious) {
         this.hasPrevious = hasPrevious;
     }
 }

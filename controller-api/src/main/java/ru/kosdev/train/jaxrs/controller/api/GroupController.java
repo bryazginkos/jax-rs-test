@@ -4,7 +4,6 @@ import ru.kosdev.train.jaxrs.controller.dto.GroupDto;
 import ru.kosdev.train.jaxrs.controller.dto.PageDto;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * Created by kos on 04.06.16.

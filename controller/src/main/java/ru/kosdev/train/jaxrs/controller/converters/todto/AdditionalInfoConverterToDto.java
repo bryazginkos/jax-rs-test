@@ -1,7 +1,6 @@
 package ru.kosdev.train.jaxrs.controller.converters.todto;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import ru.kosdev.train.jaxrs.controller.dto.AdditionalInfoDto;
 import ru.kosdev.train.jaxrs.repository.entity.AdditionalInfo;
 

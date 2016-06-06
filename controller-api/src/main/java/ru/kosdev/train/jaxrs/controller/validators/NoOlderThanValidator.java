@@ -12,12 +12,13 @@ public class NoOlderThanValidator implements ConstraintValidator<NoOlderThan, Lo
     private int years;
 
     @Override
-    public void initialize(NoOlderThan noOlderThan) {
+    public void initialize(final NoOlderThan noOlderThan) {
         years = noOlderThan.years();
     }
 
     @Override
-    public boolean isValid(LocalDate localDate, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(final LocalDate localDate,
+                           final ConstraintValidatorContext constraintValidatorContext) {
         if (localDate == null) {
             return true;
         }

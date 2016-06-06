@@ -46,7 +46,7 @@ public class ContactControllerImpl implements ContactController {
 
     @Nonnull
     @Override
-    public ContactDto createContact(@Nonnull ContactDto contactDto) {
+    public ContactDto createContact(@Nonnull final ContactDto contactDto) {
         final boolean validName = contactService.checkNameIsFree(contactDto.getName());
         if (!validName) {
             throw new IncorrectDataException("The name " + contactDto.getName()
@@ -60,7 +60,8 @@ public class ContactControllerImpl implements ContactController {
 
     @Nonnull
     @Override
-    public ContactDto updateContract(@Nonnull Integer id, @Nonnull ContactDto contactDto) {
+    public ContactDto updateContract(@Nonnull final Integer id,
+                                     @Nonnull final ContactDto contactDto) {
         checkContactExists(id);
         final boolean validName = contactService.checkContactNameHasOnly(id, contactDto.getName());
         if (!validName) {
@@ -74,20 +75,23 @@ public class ContactControllerImpl implements ContactController {
     }
 
     @Override
-    public void deleteContact(@Nonnull Integer contactId) {
+    public void deleteContact(@Nonnull final Integer contactId) {
         checkContactExists(contactId);
         contactService.deleteContact(contactId);
     }
 
     @Nonnull
     @Override
-    public PageDto<ContactDto> getContacts(@Nonnull Integer page, @Nonnull Integer pageSize) {
+    public PageDto<ContactDto> getContacts(@Nonnull final Integer page,
+                                           @Nonnull final Integer pageSize) {
         final Page<Contact> contactPage = contactService.getContacts(page, pageSize);
         return pageConverterToDto.convert(contactPage, toDtoConverter);
     }
 
     @Override
-    public PageDto<ContactDto> getContactsByGroupId(@Nonnull Integer groupId, @Nonnull Integer page, @Nonnull Integer pageSize) {
+    public PageDto<ContactDto> getContactsByGroupId(@Nonnull final Integer groupId,
+                                                    @Nonnull final Integer page,
+                                                    @Nonnull final Integer pageSize) {
         if (!groupService.exists(groupId)) {
             throw new NotFoundException("The group with id " + groupId + " is not found");
         }
@@ -97,13 +101,13 @@ public class ContactControllerImpl implements ContactController {
 
     @Nonnull
     @Override
-    public ContactDto getContact(@Nonnull Integer id) {
+    public ContactDto getContact(@Nonnull final Integer id) {
         checkContactExists(id);
         final Contact contact = contactService.getContact(id);
         return toDtoConverter.apply(contact);
     }
 
-    private void checkGroupsExist(@Nullable List<GroupDto> groupList) {
+    private void checkGroupsExist(@Nullable final List<GroupDto> groupList) {
         if (groupList != null) {
             final List<Integer> groupIdList = groupList.stream()
                     .map(GroupDto::getId)
@@ -116,7 +120,7 @@ public class ContactControllerImpl implements ContactController {
         }
     }
 
-    private void checkContactExists(@Nonnull Integer id) {
+    private void checkContactExists(@Nonnull final Integer id) {
         if (!contactService.exists(id)) {
             throw new NotFoundException("The contact with id " + id + " doesn't exist");
         }

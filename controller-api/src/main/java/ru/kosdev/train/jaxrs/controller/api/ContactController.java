@@ -21,7 +21,9 @@ public interface ContactController {
     @Nonnull
     PageDto<ContactDto> getContacts(@Nonnull Integer page, @Nonnull Integer pageSize);
 
-    PageDto<ContactDto> getContactsByGroupId(@Nonnull Integer groupId, @Nonnull Integer page, @Nonnull Integer pageSize);
+    PageDto<ContactDto> getContactsByGroupId(@Nonnull Integer groupId,
+                                             @Nonnull Integer page,
+                                             @Nonnull Integer pageSize);
 
     @Nonnull
     ContactDto getContact(@Nonnull Integer id);

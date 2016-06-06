@@ -22,55 +22,57 @@ public class ContactServiceImpl implements ContactService {
 
     @Nonnull
     @Override
-    public Contact createContact(@Nonnull Contact contact) {
+    public Contact createContact(@Nonnull final Contact contact) {
         contact.setId(null);
         return contactRepository.save(contact);
     }
 
     @Nonnull
     @Override
-    public Contact updateContact(@Nonnull Integer contactId, @Nonnull Contact contact) {
+    public Contact updateContact(@Nonnull final Integer contactId, @Nonnull final Contact contact) {
         contact.setId(contactId);
         return contactRepository.save(contact);
     }
 
     @Nonnull
     @Override
-    public Page<Contact> getContacts(@Nonnull Integer page, @Nonnull Integer pageSize) {
+    public Page<Contact> getContacts(@Nonnull final Integer page, @Nonnull final Integer pageSize) {
         return contactRepository.findAll(new PageRequest(page, pageSize));
     }
 
     @Nonnull
     @Override
-    public Page<Contact> getContactsByGroupId(@Nonnull Integer groupId, @Nonnull Integer page, @Nonnull Integer pageSize) {
+    public Page<Contact> getContactsByGroupId(@Nonnull final Integer groupId,
+                                              @Nonnull final Integer page,
+                                              @Nonnull final Integer pageSize) {
         return contactRepository.findByGroupListId(groupId, new PageRequest(page, pageSize));
     }
 
     @Nullable
     @Override
-    public Contact getContact(@Nonnull Integer contactId) {
+    public Contact getContact(@Nonnull final Integer contactId) {
         return contactRepository.findOne(contactId);
     }
 
     @Override
-    public boolean checkNameIsFree(@Nonnull String name) {
+    public boolean checkNameIsFree(@Nonnull final String name) {
         final Contact sameNameContact = contactRepository.findByName(name);
         return sameNameContact == null;
     }
 
     @Override
-    public boolean checkContactNameHasOnly(@Nonnull Integer contactId, @Nonnull String name) {
+    public boolean checkContactNameHasOnly(@Nonnull final Integer contactId, @Nonnull final String name) {
         final Contact sameNameContact = contactRepository.findByName(name);
         return sameNameContact == null || contactId.equals(sameNameContact.getId());
     }
 
     @Override
-    public boolean exists(@Nonnull Integer contactId) {
+    public boolean exists(@Nonnull final Integer contactId) {
         return getContact(contactId) != null;
     }
 
     @Override
-    public void deleteContact(@Nonnull Integer contactId) {
+    public void deleteContact(@Nonnull final Integer contactId) {
         contactRepository.delete(contactId);
     }
 }
