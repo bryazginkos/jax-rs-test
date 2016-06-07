@@ -42,7 +42,7 @@ public interface GroupResource {
 
     @DELETE
     @Path("group/{id}")
-    @ApiOperation(value = "Delete group")
+    @ApiOperation(value = "Delete group", notes = "Only group without members can be deleted")
     void deleteGroup(@PathParam("id") Integer groupId);
 
     @GET
