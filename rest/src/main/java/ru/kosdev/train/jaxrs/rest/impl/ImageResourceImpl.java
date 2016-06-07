@@ -19,8 +19,7 @@ public class ImageResourceImpl implements ImageResource {
     private ImageController imageController;
 
     @Override
-    public Response uploadImage(final InputStream inputStream,
-                                final FormDataContentDisposition fileMetaData) {
+    public Response uploadImage(final InputStream inputStream) {
         final String imageName = imageController.save(inputStream);
         return Response
                 .status(Response.Status.ACCEPTED)

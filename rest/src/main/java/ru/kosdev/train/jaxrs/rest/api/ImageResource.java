@@ -18,13 +18,11 @@ public interface ImageResource {
     /**
      * Upload image. Returns the unique key (imageName) for access.
      * @param inputStream
-     * @param fileMetaData
      * @return
      */
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    Response uploadImage(@FormDataParam("file") InputStream inputStream,
-                         @FormDataParam("file") FormDataContentDisposition fileMetaData);
+    Response uploadImage(@FormDataParam("file") InputStream inputStream);
 
     /**
      * Returns image by key.
@@ -33,6 +31,6 @@ public interface ImageResource {
      */
     @GET
     @Produces("image/jpeg")
-    Response loadImage(@NotBlank(message = "empty image name")
+    Response loadImage(@NotBlank(message = "{image.name.empty}")
                           @QueryParam("name") String imageName);
 }
