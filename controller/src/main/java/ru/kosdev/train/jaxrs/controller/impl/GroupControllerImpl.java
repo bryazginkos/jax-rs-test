@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import ru.kosdev.train.jaxrs.common.MessageCode;
 import ru.kosdev.train.jaxrs.controller.api.GroupController;
 import ru.kosdev.train.jaxrs.controller.api.IncorrectDataException;
 import ru.kosdev.train.jaxrs.controller.api.NotFoundException;
@@ -42,7 +43,7 @@ public class GroupControllerImpl implements GroupController {
         final String name = groupDto.getName();
         final boolean validName = groupService.checkGroupNameIsFree(name);
         if (!validName) {
-            throw new IncorrectDataException("Name " + name + " is already used");
+            throw new IncorrectDataException(MessageCode.ERR_GROUP_NAME_USED, name);
         }
         final Group group = fromDtoConverter.apply(groupDto);
         final Group createdGroup = groupService.createGroup(group);
@@ -56,7 +57,7 @@ public class GroupControllerImpl implements GroupController {
         final String name = groupDto.getName();
         final boolean validName = groupService.checkGroupNameHasOnly(id, name);
         if (!validName) {
-            throw new IncorrectDataException("Name " + name + " is already used");
+            throw new IncorrectDataException(MessageCode.ERR_GROUP_NAME_USED, name);
         }
         final Group group = fromDtoConverter.apply(groupDto);
         final Group updatedGroup = groupService.updateGroup(id, group);
@@ -85,7 +86,7 @@ public class GroupControllerImpl implements GroupController {
 
     private void checkGroupExists(@Nonnull final Integer groupId) {
         if (!groupService.exists(groupId)) {
-            throw new NotFoundException("Group with id " + groupId + " doesn't exist");
+            throw new NotFoundException(MessageCode.ERR_GROUP_NOT_FOUND, groupId);
         }
     }
 }

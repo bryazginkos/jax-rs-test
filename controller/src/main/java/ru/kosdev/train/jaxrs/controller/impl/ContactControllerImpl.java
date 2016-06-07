@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import ru.kosdev.train.jaxrs.common.MessageCode;
 import ru.kosdev.train.jaxrs.controller.api.ContactController;
 import ru.kosdev.train.jaxrs.controller.api.IncorrectDataException;
 import ru.kosdev.train.jaxrs.controller.api.NotFoundException;
@@ -49,8 +50,8 @@ public class ContactControllerImpl implements ContactController {
     public ContactDto createContact(@Nonnull final ContactDto contactDto) {
         final boolean validName = contactService.checkNameIsFree(contactDto.getName());
         if (!validName) {
-            throw new IncorrectDataException("The name " + contactDto.getName()
-            + " is already used");
+            throw new IncorrectDataException(MessageCode.ERR_CONTACT_NAME_USED,
+                    contactDto.getName());
         }
         checkGroupsExist(contactDto.getGroupList());
         final Contact contact = converterFromDto.apply(contactDto);
@@ -65,8 +66,8 @@ public class ContactControllerImpl implements ContactController {
         checkContactExists(id);
         final boolean validName = contactService.checkContactNameHasOnly(id, contactDto.getName());
         if (!validName) {
-            throw new IncorrectDataException("The name " + contactDto.getName()
-                    + " is already used");
+            throw new IncorrectDataException(MessageCode.ERR_CONTACT_NAME_USED,
+                    contactDto.getName());
         }
         checkGroupsExist(contactDto.getGroupList());
         final Contact contact = converterFromDto.apply(contactDto);
@@ -93,7 +94,7 @@ public class ContactControllerImpl implements ContactController {
                                                     @Nonnull final Integer page,
                                                     @Nonnull final Integer pageSize) {
         if (!groupService.exists(groupId)) {
-            throw new NotFoundException("The group with id " + groupId + " is not found");
+            throw new NotFoundException(MessageCode.ERR_GROUP_NOT_FOUND, groupId);
         }
         final Page<Contact> contactPage = contactService.getContactsByGroupId(groupId, page, pageSize);
         return pageConverterToDto.convert(contactPage, toDtoConverter);
@@ -114,7 +115,7 @@ public class ContactControllerImpl implements ContactController {
                     .collect(Collectors.toList());
             for (Integer groupId : groupIdList) {
                 if (!groupService.exists(groupId)) {
-                    throw new IncorrectDataException("The group with id " + groupId + " doesn't exist");
+                    throw new IncorrectDataException(MessageCode.ERR_GROUP_NOT_FOUND, groupId);
                 }
             }
         }
@@ -122,7 +123,7 @@ public class ContactControllerImpl implements ContactController {
 
     private void checkContactExists(@Nonnull final Integer id) {
         if (!contactService.exists(id)) {
-            throw new NotFoundException("The contact with id " + id + " doesn't exist");
+            throw new NotFoundException(MessageCode.ERR_CONTACT_NOT_FOUND, id);
         }
     }
 

@@ -5,6 +5,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+import ru.kosdev.train.jaxrs.common.MessageCode;
 import ru.kosdev.train.jaxrs.controller.api.BusinessException;
 
 /**
@@ -25,7 +26,7 @@ public class ControllerAspect {
         } catch (BusinessException e) {
             throw e;
         } catch (Throwable e) {
-            throw new BusinessException(e.getMessage());
+            throw new BusinessException(MessageCode.ERR_UNKNOWN, e.getMessage());
         }
     }
 }
