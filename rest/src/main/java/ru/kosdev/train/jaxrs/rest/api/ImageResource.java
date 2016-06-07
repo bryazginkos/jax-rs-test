@@ -1,18 +1,19 @@
 package ru.kosdev.train.jaxrs.rest.api;
 
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.io.InputStream;
 
 /**
  * Created by kbryazgin on 5/12/2016.
  */
 @Path("image")
+@Api(value = "/image")
 public interface ImageResource {
 
     /**
@@ -22,7 +23,8 @@ public interface ImageResource {
      */
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    Response uploadImage(@FormDataParam("file") InputStream inputStream);
+    @ApiOperation(value = "Upload image")
+    String uploadImage(@FormDataParam("file") InputStream inputStream);
 
     /**
      * Returns image by key.
@@ -31,6 +33,7 @@ public interface ImageResource {
      */
     @GET
     @Produces("image/jpeg")
-    Response loadImage(@NotBlank(message = "{image.name.empty}")
+    @ApiOperation(value = "Get image")
+    byte[] loadImage(@NotBlank(message = "{image.name.empty}")
                           @QueryParam("name") String imageName);
 }

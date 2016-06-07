@@ -32,7 +32,7 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public byte[] get(final String imageName) throws FileNotFoundException {
+    public byte[] get(final String imageName) throws FileNotFoundException  {
         final Path path = Paths.get(imagesPath + imageName);
 
         if (!Files.exists(path)) {

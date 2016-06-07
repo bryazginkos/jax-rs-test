@@ -8,6 +8,7 @@ import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
 import ru.kosdev.train.jaxrs.rest.exceptions.BusinessExceptionMapper;
+import ru.kosdev.train.jaxrs.rest.exceptions.ImageNotFoundExceptionMapper;
 import ru.kosdev.train.jaxrs.rest.exceptions.IncorrectDataExceptionMapper;
 import ru.kosdev.train.jaxrs.rest.exceptions.NotFoundExceptionMapper;
 import ru.kosdev.train.jaxrs.rest.impl.ContactResourceImpl;
@@ -28,6 +29,7 @@ public class App extends ResourceConfig {
         register(IncorrectDataExceptionMapper.class);
         register(NotFoundExceptionMapper.class);
         register(BusinessExceptionMapper.class);
+        register(ImageNotFoundExceptionMapper.class);
 
         register(JacksonObjectMapperProvider.class);
         register(MultiPartFeature.class);
