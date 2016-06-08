@@ -18,7 +18,7 @@ public class BusinessExceptionMapper implements ExceptionMapper<BusinessExceptio
     private Messages messages;
 
     @Override
-    public Response toResponse(BusinessException e) {
+    public Response toResponse(final BusinessException e) {
         final String message = messages.getMessage(e);
         return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                 .entity(new ErrorResponse(message))

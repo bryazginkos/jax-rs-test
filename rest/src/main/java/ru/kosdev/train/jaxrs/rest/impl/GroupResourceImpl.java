@@ -18,27 +18,27 @@ public class GroupResourceImpl implements GroupResource {
     private GroupController groupController;
 
     @Override
-    public GroupDto create(GroupDto groupDto) {
+    public GroupDto create(final GroupDto groupDto) {
         return groupController.createGroup(groupDto);
     }
 
     @Override
-    public GroupDto update(Integer groupId, GroupDto contactDto) {
+    public GroupDto update(final Integer groupId, final GroupDto contactDto) {
         return groupController.updateGroup(groupId, contactDto);
     }
 
     @Override
-    public GroupDto getGroup(Integer groupId) {
+    public GroupDto getGroup(final Integer groupId) {
         return groupController.getGroup(groupId);
     }
 
     @Override
-    public void deleteGroup(Integer groupId) {
+    public void deleteGroup(final Integer groupId) {
         groupController.deteteGroup(groupId);
     }
 
     @Override
-    public PageDto<GroupDto> getGroups(Integer page, Integer size) {
+    public PageDto<GroupDto> getGroups(final Integer page, final Integer size) {
         return groupController.getGroups(page, size);
     }
 }

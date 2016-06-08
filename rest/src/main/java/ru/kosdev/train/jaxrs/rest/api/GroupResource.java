@@ -23,7 +23,7 @@ public interface GroupResource {
     @ApiOperation(
             value = "Create group",
             notes = "\"id\" value in model is ignored"
-    )
+        )
     GroupDto create(@Valid GroupDto groupDto);
 
     @PUT
@@ -32,7 +32,7 @@ public interface GroupResource {
     @ApiOperation(
             value = "Edit group",
             notes = "\"id\" value in model is ignored"
-    )
+        )
     GroupDto update(@PathParam("id") Integer groupId, @Valid GroupDto contactDto);
 
     @GET

@@ -22,7 +22,7 @@ public interface ContactResource {
     @ApiOperation(
             value = "Create contact",
             notes = "\"groupList\" names will be ignored. \"id\" value in model is ignored"
-    )
+        )
     @POST
     @Path("contact")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -31,7 +31,7 @@ public interface ContactResource {
     @ApiOperation(
             value = "Edit contact",
             notes = "\"groupList\" names will be ignored. \"id\" value in model is ignored"
-    )
+        )
     @PUT
     @Path("contact/{id}")
     @Consumes(MediaType.APPLICATION_JSON)

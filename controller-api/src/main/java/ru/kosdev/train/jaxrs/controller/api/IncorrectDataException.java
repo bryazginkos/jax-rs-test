@@ -7,7 +7,7 @@ import ru.kosdev.train.jaxrs.common.MessageCode;
  */
 public class IncorrectDataException extends BusinessException {
 
-    public IncorrectDataException(MessageCode code, Object... args) {
+    public IncorrectDataException(final MessageCode code, final Object... args) {
         super(code, args);
     }
 }

@@ -10,8 +10,7 @@ public enum MessageCode {
 
     ERR_GROUP_NOT_FOUND("err.group.not.found"),
     ERR_GROUP_NAME_USED("err.group.name.used"),
-    ERR_UNKNOWN("err.unknown")
-    ;
+    ERR_UNKNOWN("err.unknown");
 
     private final String key;
 

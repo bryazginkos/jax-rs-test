@@ -20,32 +20,34 @@ public class ContactResourceImpl implements ContactResource {
     private ContactController contactController;
 
     @Override
-    public ContactDto create(ContactDto contactDto) {
+    public ContactDto create(final ContactDto contactDto) {
         return contactController.createContact(contactDto);
     }
 
     @Override
-    public ContactDto update(Integer contactId, ContactDto contactDto) {
+    public ContactDto update(final Integer contactId, final ContactDto contactDto) {
         return contactController.updateContract(contactId, contactDto);
     }
 
     @Override
-    public void deleteContact(Integer contactId) {
+    public void deleteContact(final Integer contactId) {
         contactController.deleteContact(contactId);
     }
 
     @Override
-    public ContactDto getContact(Integer contactId) {
+    public ContactDto getContact(final Integer contactId) {
         return contactController.getContact(contactId);
     }
 
     @Override
-    public PageDto<ContactDto> getContacts(Integer page, Integer size) {
+    public PageDto<ContactDto> getContacts(final Integer page, final Integer size) {
         return contactController.getContacts(page, size);
     }
 
     @Override
-    public PageDto<ContactDto> getGroupContacts(Integer groupId, @NotNull(message = "page is null") Integer page, @NotNull(message = "size is null") Integer size) {
+    public PageDto<ContactDto> getGroupContacts(final Integer groupId,
+                                                @NotNull(message = "page is null") final Integer page,
+                                                @NotNull(message = "size is null") final Integer size) {
         return contactController.getContactsByGroupId(groupId, page, size);
     }
 }

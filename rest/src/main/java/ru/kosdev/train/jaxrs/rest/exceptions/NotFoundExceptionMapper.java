@@ -18,7 +18,7 @@ public class NotFoundExceptionMapper implements ExceptionMapper<NotFoundExceptio
     private Messages messages;
 
     @Override
-    public Response toResponse(NotFoundException e) {
+    public Response toResponse(final NotFoundException e) {
         final String message = messages.getMessage(e);
         return Response.status(Response.Status.NOT_FOUND)
                 .entity(new ErrorResponse(message))

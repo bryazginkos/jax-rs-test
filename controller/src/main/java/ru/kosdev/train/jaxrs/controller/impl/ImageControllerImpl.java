@@ -2,10 +2,8 @@ package ru.kosdev.train.jaxrs.controller.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import ru.kosdev.train.jaxrs.common.MessageCode;
 import ru.kosdev.train.jaxrs.controller.api.ImageController;
 import ru.kosdev.train.jaxrs.controller.api.ImageNotFoundException;
-import ru.kosdev.train.jaxrs.controller.api.NotFoundException;
 import ru.kosdev.train.jaxrs.service.api.ImageService;
 
 import java.io.FileNotFoundException;

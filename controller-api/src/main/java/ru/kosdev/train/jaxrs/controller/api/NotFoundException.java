@@ -7,7 +7,7 @@ import ru.kosdev.train.jaxrs.common.MessageCode;
  */
 public class NotFoundException extends BusinessException {
 
-    public NotFoundException(MessageCode code, Object... args) {
+    public NotFoundException(final MessageCode code, final Object... args) {
         super(code, args);
     }
 }

@@ -13,13 +13,13 @@ import java.io.InputStream;
  */
 public class ImageNotFoundExceptionMapper implements ExceptionMapper<ImageNotFoundException> {
     @Override
-    public Response toResponse(ImageNotFoundException e) {
+    public Response toResponse(final ImageNotFoundException e) {
         try {
             final InputStream stream = getClass()
                     .getClassLoader()
                     .getResourceAsStream("no-image.jpg");
 
-            byte[] bytes = IOUtils.toByteArray(stream);
+            final byte[] bytes = IOUtils.toByteArray(stream);
             return Response.status(Response.Status.NOT_FOUND)
                     .entity(bytes)
                     .build();

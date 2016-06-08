@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.NoSuchMessageException;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.stereotype.Component;
 import ru.kosdev.train.jaxrs.controller.api.BusinessException;
 
@@ -21,12 +20,9 @@ public class MessagesImpl implements Messages {
     @Qualifier("resourceBundleMessageSource")
     private MessageSource messageSource;
 
-    @Autowired
-    ReloadableResourceBundleMessageSource reloadableResourceBundleMessageSource;
-
     @Override
     @Nonnull
-    public String getMessage(@Nonnull BusinessException e) {
+    public String getMessage(@Nonnull final BusinessException e) {
         try {
             return messageSource.getMessage(e.getMessageCode().getKey(), e.getArgs(),
                     Locale.US);
